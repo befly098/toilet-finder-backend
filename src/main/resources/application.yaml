@@ -9,4 +9,31 @@ spring:
       port: 6379
       # password: your_redis_password  # ??? ??
       timeout: 2s
+  datasource:
+    url: jdbc:postgresql://localhost:5432/toiletfinder
+    username: toilet
+    password: toilet123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info   # ???? "*" ?
+  endpoint:
+    health:
+      show-details: always     # ?? ??(REDIS/DB ?) ????
+      probes:
+        enabled: true          # liveness/readiness ??? ???
+  health:
+    redis:
+      enabled: true            # Redis ?? ??(?? true)
+    db:
+      enabled: true            # DB ?? ??(?? true)
 
