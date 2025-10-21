@@ -25,6 +25,13 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      # ↓ 여기에 넣은 .sql/.sh 파일은 "데이터 디렉토리가 비어있을 때" 1회 자동 실행됨
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U toilet -d toiletfinder"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     networks:
       - backend-net
 
