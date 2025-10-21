@@ -109,4 +109,4 @@ java -jar build/libs/*.jar
 - ENV: DB_* / ALLOWED_ORIGINS 세팅
 
 ## 📝 License
-Seorin Park (변경 가능)
+Seorin Park
