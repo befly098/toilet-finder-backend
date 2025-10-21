@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ddongkan
+  cache:
+    type: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      # password: your_redis_password  # ??? ??
+      timeout: 2s
+
