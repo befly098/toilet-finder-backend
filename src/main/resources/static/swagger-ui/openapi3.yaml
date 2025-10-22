@@ -1,0 +1,80 @@
+openapi: 3.0.1
+info:
+  title: My API
+  description: My API description
+  version: 0.1.0
+servers:
+- url: https://localhost:8080
+tags: []
+paths:
+  /api/v1/toilets:
+    get:
+      tags:
+      - api
+      summary: Retrieve a list of toilets near the specified latitude and longitude.
+      description: Retrieve a list of toilets near the specified latitude and longitude.
+      operationId: get-toilets
+      parameters:
+      - name: lat
+        in: query
+        description: Latitude of the location to search nearby toilets.
+        required: true
+        schema:
+          type: string
+      - name: lng
+        in: query
+        description: Longitude of the location to search nearby toilets.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api-v1-toilets1088392552"
+              examples:
+                get-toilets:
+                  value: "{\"id\":1,\"name\":\"Sample Toilet\",\"address\":\"123 Sample\
+                    \ St, Sample City\",\"lat\":37.5665,\"lng\":126.978,\"openHours\"\
+                    :\"24/7\",\"accessible\":true,\"diaper\":true,\"unisex\":false,\"\
+                    avgRating\":4.5,\"avgCleanliness\":4.0}"
+components:
+  schemas:
+    api-v1-toilets1088392552:
+      type: object
+      properties:
+        unisex:
+          type: boolean
+          description: Indicates if the toilet is unisex.
+        openHours:
+          type: string
+          description: Operating hours of the toilet.
+        accessible:
+          type: boolean
+          description: Indicates if the toilet is accessible for disabled individuals.
+        address:
+          type: string
+          description: Address of the toilet.
+        lng:
+          type: number
+          description: Longitude of the toilet.
+        name:
+          type: string
+          description: Name of the toilet.
+        avgRating:
+          type: number
+          description: Average overall rating of the toilet.
+        diaper:
+          type: boolean
+          description: Indicates if the toilet has a diaper changing station.
+        id:
+          type: number
+          description: Unique identifier of the toilet.
+        lat:
+          type: number
+          description: Latitude of the toilet.
+        avgCleanliness:
+          type: number
+          description: Average cleanliness rating of the toilet.
