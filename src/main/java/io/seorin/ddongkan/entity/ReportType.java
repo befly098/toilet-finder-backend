@@ -1,4 +1,4 @@
-package io.seorin.ddongkan.domain;
+package io.seorin.ddongkan.entity;
 
 public enum ReportType {
 	CROWDED,        // 혼잡도 제보

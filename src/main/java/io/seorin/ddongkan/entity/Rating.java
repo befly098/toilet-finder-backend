@@ -1,4 +1,4 @@
-package io.seorin.ddongkan.domain;
+package io.seorin.ddongkan.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
