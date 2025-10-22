@@ -1,9 +1,21 @@
 package io.seorin.ddongkan.entity;
 
-import jakarta.persistence.*;
+import java.time.Instant;
+
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.Instant;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "rating",
@@ -59,22 +71,51 @@ public class Rating {
 	}
 
 	// --- getters / setters ---
-	public Long getId() { return id; }
+	public Long getId() {
+		return id;
+	}
 
-	public Toilet getToilet() { return toilet; }
-	public void setToilet(Toilet toilet) { this.toilet = toilet; }
+	public Toilet getToilet() {
+		return toilet;
+	}
 
-	public int getScore() { return score; }
-	public void setScore(int score) { this.score = score; }
+	public void setToilet(Toilet toilet) {
+		this.toilet = toilet;
+	}
 
-	public Integer getCleanlinessScore() { return cleanlinessScore; }
-	public void setCleanlinessScore(Integer cleanlinessScore) { this.cleanlinessScore = cleanlinessScore; }
+	public int getScore() {
+		return score;
+	}
 
-	public String getDeviceHash() { return deviceHash; }
-	public void setDeviceHash(String deviceHash) { this.deviceHash = deviceHash; }
+	public void setScore(int score) {
+		this.score = score;
+	}
 
-	public String getIpHash() { return ipHash; }
-	public void setIpHash(String ipHash) { this.ipHash = ipHash; }
+	public Integer getCleanlinessScore() {
+		return cleanlinessScore;
+	}
 
-	public Instant getCreatedAt() { return createdAt; }
+	public void setCleanlinessScore(Integer cleanlinessScore) {
+		this.cleanlinessScore = cleanlinessScore;
+	}
+
+	public String getDeviceHash() {
+		return deviceHash;
+	}
+
+	public void setDeviceHash(String deviceHash) {
+		this.deviceHash = deviceHash;
+	}
+
+	public String getIpHash() {
+		return ipHash;
+	}
+
+	public void setIpHash(String ipHash) {
+		this.ipHash = ipHash;
+	}
+
+	public Instant getCreatedAt() {
+		return createdAt;
+	}
 }

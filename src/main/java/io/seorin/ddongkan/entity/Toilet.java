@@ -1,10 +1,17 @@
 package io.seorin.ddongkan.entity;
 
-import jakarta.persistence.*;
+import java.time.Instant;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.Instant;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "toilet",
@@ -88,56 +95,126 @@ public class Toilet {
 	}
 
 	// --- getters / setters ---
-	public Long getId() { return id; }
-	public void setId(Long id) { this.id = id; }
+	public Long getId() {
+		return id;
+	}
 
-	public String getName() { return name; }
-	public void setName(String name) { this.name = name; }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-	public String getAddress() { return address; }
-	public void setAddress(String address) { this.address = address; }
+	public String getName() {
+		return name;
+	}
 
-	public double getLat() { return lat; }
-	public void setLat(double lat) { this.lat = lat; }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	public double getLng() { return lng; }
-	public void setLng(double lng) { this.lng = lng; }
+	public String getAddress() {
+		return address;
+	}
 
-	public String getOpenHours() { return openHours; }
-	public void setOpenHours(String openHours) { this.openHours = openHours; }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-	public boolean isAccessible() { return accessible; }
-	public void setAccessible(boolean accessible) { this.accessible = accessible; }
+	public double getLat() {
+		return lat;
+	}
 
-	public boolean isDiaper() { return diaper; }
-	public void setDiaper(boolean diaper) { this.diaper = diaper; }
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
 
-	public boolean isUnisex() { return unisex; }
-	public void setUnisex(boolean unisex) { this.unisex = unisex; }
+	public double getLng() {
+		return lng;
+	}
 
-	public long getRatingSum() { return ratingSum; }
-	public void setRatingSum(long ratingSum) { this.ratingSum = ratingSum; }
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
 
-	public long getRatingCount() { return ratingCount; }
-	public void setRatingCount(long ratingCount) { this.ratingCount = ratingCount; }
+	public String getOpenHours() {
+		return openHours;
+	}
 
-	public long getCleanlinessSum() { return cleanlinessSum; }
-	public void setCleanlinessSum(long cleanlinessSum) { this.cleanlinessSum = cleanlinessSum; }
+	public void setOpenHours(String openHours) {
+		this.openHours = openHours;
+	}
 
-	public long getCleanlinessCount() { return cleanlinessCount; }
-	public void setCleanlinessCount(long cleanlinessCount) { this.cleanlinessCount = cleanlinessCount; }
+	public boolean isAccessible() {
+		return accessible;
+	}
 
-	public Instant getCreatedAt() { return createdAt; }
-	public Instant getUpdatedAt() { return updatedAt; }
+	public void setAccessible(boolean accessible) {
+		this.accessible = accessible;
+	}
+
+	public boolean isDiaper() {
+		return diaper;
+	}
+
+	public void setDiaper(boolean diaper) {
+		this.diaper = diaper;
+	}
+
+	public boolean isUnisex() {
+		return unisex;
+	}
+
+	public void setUnisex(boolean unisex) {
+		this.unisex = unisex;
+	}
+
+	public long getRatingSum() {
+		return ratingSum;
+	}
+
+	public void setRatingSum(long ratingSum) {
+		this.ratingSum = ratingSum;
+	}
+
+	public long getRatingCount() {
+		return ratingCount;
+	}
+
+	public void setRatingCount(long ratingCount) {
+		this.ratingCount = ratingCount;
+	}
+
+	public long getCleanlinessSum() {
+		return cleanlinessSum;
+	}
+
+	public void setCleanlinessSum(long cleanlinessSum) {
+		this.cleanlinessSum = cleanlinessSum;
+	}
+
+	public long getCleanlinessCount() {
+		return cleanlinessCount;
+	}
+
+	public void setCleanlinessCount(long cleanlinessCount) {
+		this.cleanlinessCount = cleanlinessCount;
+	}
+
+	public Instant getCreatedAt() {
+		return createdAt;
+	}
+
+	public Instant getUpdatedAt() {
+		return updatedAt;
+	}
 
 	// --- helpers ---
 	public double getAverageRating() {
-		return ratingCount == 0 ? 0.0 : (double) ratingSum / ratingCount;
+		return ratingCount == 0 ? 0.0 : (double)ratingSum / ratingCount;
 	}
 
 	// 청결 평균은 데이터 없으면 0.0 반환; 필요 시 null 반환 형태로 바꿔도 됨.
 	public double getAverageCleanliness() {
-		return cleanlinessCount == 0 ? 0.0 : (double) cleanlinessSum / cleanlinessCount;
+		return cleanlinessCount == 0 ? 0.0 : (double)cleanlinessSum / cleanlinessCount;
 	}
 
 	public void addRating(int score) {

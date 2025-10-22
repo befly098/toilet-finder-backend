@@ -1,9 +1,23 @@
 package io.seorin.ddongkan.entity;
 
-import jakarta.persistence.*;
+import java.time.Instant;
+
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.Instant;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "report",
@@ -53,19 +67,43 @@ public class Report {
 	}
 
 	// --- getters / setters ---
-	public Long getId() { return id; }
+	public Long getId() {
+		return id;
+	}
 
-	public Toilet getToilet() { return toilet; }
-	public void setToilet(Toilet toilet) { this.toilet = toilet; }
+	public Toilet getToilet() {
+		return toilet;
+	}
 
-	public ReportType getType() { return type; }
-	public void setType(ReportType type) { this.type = type; }
+	public void setToilet(Toilet toilet) {
+		this.toilet = toilet;
+	}
 
-	public String getPayload() { return payload; }
-	public void setPayload(String payload) { this.payload = payload; }
+	public ReportType getType() {
+		return type;
+	}
 
-	public String getClientHint() { return clientHint; }
-	public void setClientHint(String clientHint) { this.clientHint = clientHint; }
+	public void setType(ReportType type) {
+		this.type = type;
+	}
 
-	public Instant getCreatedAt() { return createdAt; }
+	public String getPayload() {
+		return payload;
+	}
+
+	public void setPayload(String payload) {
+		this.payload = payload;
+	}
+
+	public String getClientHint() {
+		return clientHint;
+	}
+
+	public void setClientHint(String clientHint) {
+		this.clientHint = clientHint;
+	}
+
+	public Instant getCreatedAt() {
+		return createdAt;
+	}
 }
