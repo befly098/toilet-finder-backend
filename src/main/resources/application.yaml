@@ -36,4 +36,3 @@ management:
       enabled: true            # Redis ?? ??(?? true)
     db:
       enabled: true            # DB ?? ??(?? true)
-
