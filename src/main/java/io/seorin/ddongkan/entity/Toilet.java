@@ -1,5 +1,9 @@
 package io.seorin.ddongkan.entity;
 
+import static java.lang.Math.*;
+
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.time.Instant;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,12 +40,12 @@ public class Toilet {
 	@Column(columnDefinition = "geometry(Point, 4326)")
 	private Point position;
 
-	// 위치 (PostGIS 도입 전까지 double 사용)
-	@Column(nullable = false)
-	private double lat;
-
-	@Column(nullable = false)
-	private double lng;
+	// // 위치 (PostGIS 도입 전까지 double 사용)
+	// @Column(nullable = false)
+	// private double lat;
+	//
+	// @Column(nullable = false)
+	// private double lng;
 
 	// 이용 시간 (예: "24시간", "09:00~22:00")
 	@Column(length = 120)
@@ -80,15 +84,20 @@ public class Toilet {
 	@Column(nullable = false)
 	private Instant updatedAt;
 
+	private final NumberFormat nf = NumberFormat.getNumberInstance();
+
 	public Toilet() {
 		// JPA 기본 생성자
+		int MAX_FRACTION_DIGITS = 2;
+		nf.setMaximumFractionDigits(MAX_FRACTION_DIGITS);
+		nf.setRoundingMode(RoundingMode.UP);
 	}
 
 	public Toilet(String name, String address, double lat, double lng) {
 		this.name = name;
 		this.address = address;
-		this.lat = lat;
-		this.lng = lng;
+		// this.lat = lat;
+		// this.lng = lng;
 		this.accessible = false;
 		this.diaper = false;
 		this.unisex = false;
@@ -123,21 +132,21 @@ public class Toilet {
 		this.address = address;
 	}
 
-	public double getLat() {
-		return lat;
-	}
-
-	public void setLat(double lat) {
-		this.lat = lat;
-	}
-
-	public double getLng() {
-		return lng;
-	}
-
-	public void setLng(double lng) {
-		this.lng = lng;
-	}
+	// public double getLat() {
+	// 	return lat;
+	// }
+	//
+	// public void setLat(double lat) {
+	// 	this.lat = lat;
+	// }
+	//
+	// public double getLng() {
+	// 	return lng;
+	// }
+	//
+	// public void setLng(double lng) {
+	// 	this.lng = lng;
+	// }
 
 	public String getOpenHours() {
 		return openHours;
@@ -147,7 +156,7 @@ public class Toilet {
 		this.openHours = openHours;
 	}
 
-	public boolean isAccessible() {
+	public boolean getAccessible() {
 		return accessible;
 	}
 
@@ -155,7 +164,7 @@ public class Toilet {
 		this.accessible = accessible;
 	}
 
-	public boolean isDiaper() {
+	public boolean getDiaper() {
 		return diaper;
 	}
 
@@ -163,7 +172,7 @@ public class Toilet {
 		this.diaper = diaper;
 	}
 
-	public boolean isUnisex() {
+	public boolean getUnisex() {
 		return unisex;
 	}
 
@@ -211,14 +220,18 @@ public class Toilet {
 		return updatedAt;
 	}
 
+	public Point getPosition() {
+		return position;
+	}
+
 	// --- helpers ---
-	public double getAverageRating() {
-		return ratingCount == 0 ? 0.0 : (double)ratingSum / ratingCount;
+	public int getAvgRating() {
+		return ratingCount == 0 ? 0 : (int)ratingSum / (int) ratingCount;
 	}
 
 	// 청결 평균은 데이터 없으면 0.0 반환; 필요 시 null 반환 형태로 바꿔도 됨.
-	public double getAverageCleanliness() {
-		return cleanlinessCount == 0 ? 0.0 : (double)cleanlinessSum / cleanlinessCount;
+	public int getAvgCleanliness() {
+		return cleanlinessCount == 0 ? 0 : (int)cleanlinessSum / (int) cleanlinessCount;
 	}
 
 	public void addRating(int score) {

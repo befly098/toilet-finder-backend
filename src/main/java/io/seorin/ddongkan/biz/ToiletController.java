@@ -1,5 +1,8 @@
 package io.seorin.ddongkan.biz;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,26 +15,21 @@ import io.seorin.ddongkan.dto.ToiletResponse;
 @RequestMapping("/api/v1/toilets")
 public class ToiletController {
 
+	private final ToiletService toiletService;
+
+	public ToiletController(ToiletService toiletService) {
+		this.toiletService = toiletService;
+	}
+
 	@GetMapping
-	public ResponseEntity<ToiletResponse> getToilets(
-		@RequestParam(value = "lat", required = true) Double lat,
-		@RequestParam(value = "lng", required = true) Double lng
+	public ResponseEntity<List<ToiletResponse>> getToilets(
+		@RequestParam(value = "lat") Double lat,
+		@RequestParam(value = "lng") Double lng
 	) {
-		return new ResponseEntity<>(
-			new ToiletResponse(
-				1,
-				"Sample Toilet",
-				"123 Sample St, Sample City",
-				lat,
-				lng,
-				"24/7",
-				true,
-				true,
-				false,
-				4.5,
-				4.0
-			),
-			org.springframework.http.HttpStatus.OK
-		);
+
+		var result = this.toiletService.selectAllPointsWithinRadius(lat, lng);
+		var responses = result.stream().map(ToiletResponse::from).toList();
+		return new ResponseEntity<>(responses, HttpStatus.OK);
+
 	}
 }
