@@ -40,6 +40,8 @@ dependencies {
 
 	// --- Database ---
 	runtimeOnly 'org.postgresql:postgresql:42.7.3'   // PostgreSQL 드라이버
+	implementation 'org.hibernate:hibernate-spatial:6.6.29.Final'	// hibernate-spatial
+
 
 	// --- Redis Cache ---
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'  // Lettuce 기반 Redis 클라이언트

@@ -7,14 +7,16 @@ spring:
     redis:
       host: localhost
       port: 6379
-      # password: your_redis_password  # ??? ??
       timeout: 2s
   datasource:
     url: jdbc:postgresql://localhost:5432/toiletfinder
     username: toilet
     password: toilet123
+    driver-class-name: org.postgresql.Driver
 
   jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     properties:
