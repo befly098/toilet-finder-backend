@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.locationtech.jts.geom.Point;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +32,9 @@ public class Toilet {
 
 	@Column(nullable = false, length = 255)
 	private String address;
+
+	@Column(columnDefinition = "geometry(Point, 4326)")
+	private Point position;
 
 	// 위치 (PostGIS 도입 전까지 double 사용)
 	@Column(nullable = false)
