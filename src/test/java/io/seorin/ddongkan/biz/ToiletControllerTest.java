@@ -48,19 +48,20 @@ class ToiletControllerTest {
 									"Longitude of the location to search nearby toilets.")
 							)
 							.responseFields(
-								fieldWithPath("id").description("Unique identifier of the toilet."),
-								fieldWithPath("name").description("Name of the toilet."),
-								fieldWithPath("address").description("Address of the toilet."),
-								fieldWithPath("lat").description("Latitude of the toilet."),
-								fieldWithPath("lng").description("Longitude of the toilet."),
-								fieldWithPath("openHours").description("Operating hours of the toilet."),
-								fieldWithPath("accessible").description(
+								fieldWithPath("[]").description("List of nearby toilets."),
+								fieldWithPath("[].id").description("Unique identifier of the toilet."),
+								fieldWithPath("[].name").description("Name of the toilet."),
+								fieldWithPath("[].address").description("Address of the toilet."),
+								fieldWithPath("[].lat").description("Latitude of the toilet."),
+								fieldWithPath("[].lng").description("Longitude of the toilet."),
+								fieldWithPath("[].openHours").description("Operating hours of the toilet."),
+								fieldWithPath("[].accessible").description(
 									"Indicates if the toilet is accessible for disabled individuals."),
-								fieldWithPath("diaper").description(
+								fieldWithPath("[].diaper").description(
 									"Indicates if the toilet has a diaper changing station."),
-								fieldWithPath("unisex").description("Indicates if the toilet is unisex."),
-								fieldWithPath("avgRating").description("Average overall rating of the toilet."),
-								fieldWithPath("avgCleanliness").description(
+								fieldWithPath("[].unisex").description("Indicates if the toilet is unisex."),
+								fieldWithPath("[].avgRating").description("Average overall rating of the toilet."),
+								fieldWithPath("[].avgCleanliness").description(
 									"Average cleanliness rating of the toilet.")
 							)
 							.build()
