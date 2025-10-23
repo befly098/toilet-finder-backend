@@ -84,13 +84,8 @@ public class Toilet {
 	@Column(nullable = false)
 	private Instant updatedAt;
 
-	private final NumberFormat nf = NumberFormat.getNumberInstance();
-
 	public Toilet() {
 		// JPA 기본 생성자
-		int MAX_FRACTION_DIGITS = 2;
-		nf.setMaximumFractionDigits(MAX_FRACTION_DIGITS);
-		nf.setRoundingMode(RoundingMode.UP);
 	}
 
 	public Toilet(String name, String address, double lat, double lng) {
