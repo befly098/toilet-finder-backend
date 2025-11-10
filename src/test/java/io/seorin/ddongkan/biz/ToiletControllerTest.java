@@ -30,10 +30,12 @@ class ToiletControllerTest {
 	void getToilets() throws Exception {
 		double lat = 37.5665;
 		double lng = 126.9780;
+		double radius = 30000.0;
 
 		mockMvc.perform(get("/api/v1/toilets")
 				.param("lat", Double.toString(lat))
-				.param("lng", Double.toString(lng)))
+				.param("lng", Double.toString(lng))
+				.param("radius", Double.toString(radius)))
 			.andExpect(status().isOk())
 			.andDo(
 				document(
@@ -45,7 +47,9 @@ class ToiletControllerTest {
 								parameterWithName("lat").description(
 									"Latitude of the location to search nearby toilets."),
 								parameterWithName("lng").description(
-									"Longitude of the location to search nearby toilets.")
+									"Longitude of the location to search nearby toilets."),
+								parameterWithName("radius").description(
+									"Radius (in meters) to search for nearby toilets. Default is 5000 meters.")
 							)
 							.responseFields(
 								fieldWithPath("[]").description("List of nearby toilets."),

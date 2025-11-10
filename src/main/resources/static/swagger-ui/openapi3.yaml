@@ -27,6 +27,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: radius
+        in: query
+        description: Radius (in meters) to search for nearby toilets. Default is 5000
+          meters.
+        required: true
+        schema:
+          type: string
       responses:
         "200":
           description: "200"
