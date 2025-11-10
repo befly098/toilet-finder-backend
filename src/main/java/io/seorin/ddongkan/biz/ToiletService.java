@@ -30,4 +30,8 @@ public class ToiletService {
 		log.info("toilet count within circle: {}", result.size());
 		return result;
 	}
+
+	public Toilet getToiletById(Long id) {
+		return this.toiletRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Toilet not found with id: " + id));
+	}
 }
