@@ -29,6 +29,10 @@ openapi3 {
 	format = "yaml" // or json
 }
 
+postman {
+	setBaseUrl("https://localhost:8080")
+}
+
 dependencies {
 	// Actuator
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
