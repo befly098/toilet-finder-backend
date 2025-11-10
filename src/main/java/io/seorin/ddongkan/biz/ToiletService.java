@@ -23,10 +23,10 @@ public class ToiletService {
 		this.toiletRepository = toiletRepository;
 	}
 
-	public List<Toilet> selectAllPointsWithinRadius(Double lat, Double lng) {
+	public List<Toilet> selectAllPointsWithinRadius(Double lat, Double lng, Double radius) {
 		Point userPoint = geomFactory.getGeometryFactory().createPoint(new Coordinate(lng, lat));
 		userPoint.setSRID(4326);
-		List<Toilet> result = this.toiletRepository.findToilet(userPoint);
+		List<Toilet> result = this.toiletRepository.findToilet(userPoint, radius);
 		log.info("toilet count within circle: {}", result.size());
 		return result;
 	}

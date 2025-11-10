@@ -17,9 +17,9 @@ public interface ToiletRepository extends JpaRepository<Toilet, Long> {
 		value = """
 			select *
 			from toilet t
-			where ST_DWithin(t.position, :point, 30000, false) = true
+			where ST_DWithin(t.position, :point, :radius, false) = true
 			""",
 		nativeQuery = true
 	)
-	List<Toilet> findToilet(@Param("point") Point point);
+	List<Toilet> findToilet(@Param("point") Point point, @Param("radius") Double radius);
 }

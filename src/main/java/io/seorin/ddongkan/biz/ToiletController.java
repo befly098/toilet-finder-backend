@@ -24,10 +24,11 @@ public class ToiletController {
 	@GetMapping
 	public ResponseEntity<List<ToiletResponse>> getToilets(
 		@RequestParam(value = "lat") Double lat,
-		@RequestParam(value = "lng") Double lng
+		@RequestParam(value = "lng") Double lng,
+		@RequestParam(value = "radius", required = false, defaultValue = "5000") Double radius
 	) {
 
-		var result = this.toiletService.selectAllPointsWithinRadius(lat, lng);
+		var result = this.toiletService.selectAllPointsWithinRadius(lat, lng, radius);
 		var responses = result.stream().map(ToiletResponse::from).toList();
 		return new ResponseEntity<>(responses, HttpStatus.OK);
 
