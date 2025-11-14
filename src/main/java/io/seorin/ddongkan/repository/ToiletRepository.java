@@ -21,5 +21,5 @@ public interface ToiletRepository extends JpaRepository<Toilet, Long> {
 			""",
 		nativeQuery = true
 	)
-	List<Toilet> findToilet(@Param("point") Point point, @Param("radius") Double radius);
+	List<Toilet> findToilets(@Param("point") Point point, @Param("radius") Double radius);
 }
