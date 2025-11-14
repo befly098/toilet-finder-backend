@@ -9,7 +9,10 @@ public class GeomFactory {
 	private final GeometryFactory geometryFactory;
 
 	public GeomFactory() {
-		this.geometryFactory = new GeometryFactory(new PrecisionModel(), 4326);
+		//@checkstyle:off
+		final int SRID = 4326;
+		//@checkstyle:on
+		this.geometryFactory = new GeometryFactory(new PrecisionModel(), SRID);
 	}
 
 	public GeometryFactory getGeometryFactory() {
