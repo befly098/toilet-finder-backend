@@ -2,6 +2,8 @@ package io.seorin.ddongkan.dto;
 
 import io.seorin.ddongkan.entity.Toilet;
 
+// TODO: 불필요한 필드 제거
+// id, name, lat, long 빼고 없애자
 public record ToiletResponse(
 	Long id,
 	String name,
