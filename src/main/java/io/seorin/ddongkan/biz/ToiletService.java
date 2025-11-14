@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import io.seorin.ddongkan.config.GeomFactory;
+import io.seorin.ddongkan.dto.Review;
 import io.seorin.ddongkan.entity.Toilet;
 import io.seorin.ddongkan.repository.ToiletRepository;
 
@@ -31,6 +32,14 @@ public class ToiletService {
 	}
 
 	public Toilet getToiletById(Long id) {
-		return this.toiletRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Toilet not found with id: " + id));
+		return this.toiletRepository.findById(id).orElseThrow(
+			() -> new IllegalArgumentException("Toilet not found with id: " + id)
+		);
+	}
+
+	public void addReview(Long id, Review review) {
+		// 별점 저장 로직 필요
+		// 후기 저장 로직 필요
+		// 좋았던 점들 저장 필요
 	}
 }

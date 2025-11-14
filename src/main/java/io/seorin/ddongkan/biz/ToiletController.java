@@ -6,10 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.seorin.ddongkan.dto.Review;
 import io.seorin.ddongkan.dto.ToiletResponse;
 
 @RestController
@@ -40,5 +43,13 @@ public class ToiletController {
 		var toilet = this.toiletService.getToiletById(id);
 		var response = ToiletResponse.from(toilet);
 		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@PostMapping("/{id}")
+	public ResponseEntity<Void> postToiletReview(
+		@PathVariable("id") Long id,
+		@RequestBody Review review) {
+		this.toiletService.addReview(id, review);
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 	}
 }
