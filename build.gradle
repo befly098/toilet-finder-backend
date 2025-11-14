@@ -22,7 +22,7 @@ repositories {
 }
 
 openapi3 {
-	setServer("https://localhost:8080") // list로 넣을 수 있어 각종 환경의 URL을 넣을 수 있음!
+	setServer("http://localhost:8080") // list로 넣을 수 있어 각종 환경의 URL을 넣을 수 있음!
 	title = "My API"
 	description = "My API description"
 	version = "0.1.0"
@@ -30,7 +30,7 @@ openapi3 {
 }
 
 postman {
-	setBaseUrl("https://localhost:8080")
+	setBaseUrl("http://localhost:8080")
 }
 
 dependencies {
