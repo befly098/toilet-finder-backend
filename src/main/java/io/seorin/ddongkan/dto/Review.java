@@ -1,10 +1,15 @@
 package io.seorin.ddongkan.dto;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+
 import jakarta.validation.constraints.NotNull;
 
 public class Review {
-	@NotNull
-	private final int stars;
+	@Range(min = 1, max = 5)
+	private final Integer stars;
+
+	@Length(max = 1000)
 	private final String comment;
 	private final Likes likes;
 
@@ -14,7 +19,7 @@ public class Review {
 		this.likes = likes;
 	}
 
-	public int getStars() {
+	public Integer getStars() {
 		return this.stars;
 	}
 
