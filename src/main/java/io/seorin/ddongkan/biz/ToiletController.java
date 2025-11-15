@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.seorin.ddongkan.dto.Review;
+import io.seorin.ddongkan.dto.ReviewRequest;
 import io.seorin.ddongkan.dto.ToiletResponse;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/toilets")
@@ -48,8 +49,8 @@ public class ToiletController {
 	@PostMapping("/{id}")
 	public ResponseEntity<Void> postToiletReview(
 		@PathVariable("id") Long id,
-		@RequestBody Review review) {
-		this.toiletService.addReview(id, review);
-		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+		@Valid @RequestBody final ReviewRequest reviewRequest) {
+		this.toiletService.addReview(id, reviewRequest);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

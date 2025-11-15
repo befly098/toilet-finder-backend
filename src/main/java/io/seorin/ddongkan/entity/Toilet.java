@@ -1,9 +1,5 @@
 package io.seorin.ddongkan.entity;
 
-import static java.lang.Math.*;
-
-import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.time.Instant;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -221,12 +217,12 @@ public class Toilet {
 
 	// --- helpers ---
 	public int getAvgRating() {
-		return ratingCount == 0 ? 0 : (int)ratingSum / (int) ratingCount;
+		return ratingCount == 0 ? 0 : (int)ratingSum / (int)ratingCount;
 	}
 
 	// 청결 평균은 데이터 없으면 0.0 반환; 필요 시 null 반환 형태로 바꿔도 됨.
 	public int getAvgCleanliness() {
-		return cleanlinessCount == 0 ? 0 : (int)cleanlinessSum / (int) cleanlinessCount;
+		return cleanlinessCount == 0 ? 0 : (int)cleanlinessSum / (int)cleanlinessCount;
 	}
 
 	public void addRating(int score) {
