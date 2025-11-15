@@ -105,8 +105,64 @@ paths:
                     강대로 405\",\"lat\":37.5547,\"lng\":126.9706,\"openHours\":\"06:00-23:00\"\
                     ,\"accessible\":true,\"diaper\":true,\"unisex\":false,\"avgRating\"\
                     :4,\"avgCleanliness\":4}"
+    post:
+      tags:
+      - api
+      summary: Submit a review for a specific toilet by its ID.
+      description: Submit a review for a specific toilet by its ID.
+      operationId: post-toilet-review
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: "#/components/schemas/api-v1-toilets-id973051148"
+            examples:
+              post-toilet-review:
+                value: "{\"stars\":1,\"comment\":\"\",\"likes\":{\"cleanliness\":false,\"\
+                  toiletPaper\":false,\"waterPressure\":true,\"hotWater\":true,\"\
+                  safety\":false}}"
+      responses:
+        "200":
+          description: "200"
 components:
   schemas:
+    api-v1-toilets-id973051148:
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Optional comment about the toilet.
+        stars:
+          type: number
+          description: Star rating for the toilet (1 to 5).
+        likes:
+          type: object
+          properties:
+            safety:
+              type: boolean
+              description: Indicates if the reviewer felt safe using the toilet.
+            waterPressure:
+              type: boolean
+              description: Indicates if the reviewer liked the water pressure.
+            toiletPaper:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of toilet
+                paper.
+            hotWater:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of hot
+                water.
+            cleanliness:
+              type: boolean
+              description: Indicates if the reviewer liked the cleanliness of the
+                toilet.
     api-v1-toilets-id1088392552:
       type: object
       properties:
