@@ -47,11 +47,13 @@ public class ReviewRequest {
 
 	@Override
 	public String toString() {
+		//@checkstyle:off
 		return "ReviewRequest{" +
 			"stars=" + stars +
 			", comment='" + comment + '\'' +
 			", likes=" + likes.toString() +
 			'}';
+		//@checkstyle:on
 	}
 
 	public static class Likes {
@@ -105,6 +107,7 @@ public class ReviewRequest {
 			this.safety = safety;
 		}
 
+		//@checkstyle:off
 		@Override
 		public String toString() {
 			return "Likes{" +
@@ -115,5 +118,6 @@ public class ReviewRequest {
 				", safety=" + this.safety +
 				'}';
 		}
+		//@checkstyle:on
 	}
 }
