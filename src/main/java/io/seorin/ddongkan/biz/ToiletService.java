@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import io.seorin.ddongkan.config.GeomFactory;
 import io.seorin.ddongkan.dto.ReviewRequest;
+import io.seorin.ddongkan.dto.ToiletResponse;
 import io.seorin.ddongkan.entity.Review;
 import io.seorin.ddongkan.entity.Toilet;
 import io.seorin.ddongkan.repository.ReviewRepository;
@@ -28,11 +29,11 @@ public class ToiletService {
 		this.reviewRepository = reviewRepository;
 	}
 
-	public List<Toilet> selectAllPointsWithinRadius(Double lat, Double lng, Double radius) {
+	public List<ToiletResponse> selectAllPointsWithinRadius(Double lat, Double lng, Double radius) {
 		var userPoint = geomFactory.getGeometryFactory().createPoint(new Coordinate(lng, lat));
-		List<Toilet> result = this.toiletRepository.findToilets(userPoint, radius);
-		log.info("toilet count within circle: {}", result.size());
-		return result;
+		List<Toilet> toilets = this.toiletRepository.findToilets(userPoint, radius);
+		log.info("toilet count within circle: {}", toilets.size());
+		return toilets.stream().map(ToiletResponse::from).toList();
 	}
 
 	public Toilet getToiletById(Long id) {

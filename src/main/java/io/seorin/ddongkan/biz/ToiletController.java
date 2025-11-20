@@ -34,8 +34,7 @@ public class ToiletController {
 	) {
 
 		var result = this.toiletService.selectAllPointsWithinRadius(lat, lng, radius);
-		var responses = result.stream().map(ToiletResponse::from).toList();
-		return new ResponseEntity<>(responses, HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 
 	}
 
