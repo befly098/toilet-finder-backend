@@ -41,8 +41,8 @@ class ToiletControllerTest {
 
 	@Test
 	void getToilets() throws Exception {
-		double lat = 37.5665;
-		double lng = 126.9780;
+		double lat = 37.4979;
+		double lng = 127.0286;
 		double radius = 30000.0;
 
 		mockMvc.perform(get("/api/v1/toilets")
@@ -68,55 +68,8 @@ class ToiletControllerTest {
 								fieldWithPath("[]").description("List of nearby toilets."),
 								fieldWithPath("[].id").description("Unique identifier of the toilet."),
 								fieldWithPath("[].name").description("Name of the toilet."),
-								fieldWithPath("[].address").description("Address of the toilet."),
-								fieldWithPath("[].lat").description("Latitude of the toilet."),
-								fieldWithPath("[].lng").description("Longitude of the toilet."),
-								fieldWithPath("[].openHours").description("Operating hours of the toilet."),
-								fieldWithPath("[].accessible").description(
-									"Indicates if the toilet is accessible for disabled individuals."),
-								fieldWithPath("[].diaper").description(
-									"Indicates if the toilet has a diaper changing station."),
-								fieldWithPath("[].unisex").description("Indicates if the toilet is unisex."),
-								fieldWithPath("[].avgRating").description("Average overall rating of the toilet."),
-								fieldWithPath("[].avgCleanliness").description(
-									"Average cleanliness rating of the toilet.")
-							)
-							.build()
-
-					)
-				)
-			);
-	}
-
-	@Test
-	void getToiletById() throws Exception {
-		long id = 12L;
-		mockMvc.perform(get("/api/v1/toilets/{id}", id))
-			.andExpect(status().isOk())
-			.andDo(
-				document(
-					"get-toilet-by-id",
-					resource(
-						ResourceSnippetParameters.builder()
-							.description("Retrieve detailed information about a specific toilet by its ID.")
-							.pathParameters(
-								parameterWithName("id").description("Unique identifier of the toilet.")
-							)
-							.responseFields(
-								fieldWithPath("id").description("Unique identifier of the toilet."),
-								fieldWithPath("name").description("Name of the toilet."),
-								fieldWithPath("address").description("Address of the toilet."),
-								fieldWithPath("lat").description("Latitude of the toilet."),
-								fieldWithPath("lng").description("Longitude of the toilet."),
-								fieldWithPath("openHours").description("Operating hours of the toilet."),
-								fieldWithPath("accessible").description(
-									"Indicates if the toilet is accessible for disabled individuals."),
-								fieldWithPath("diaper").description(
-									"Indicates if the toilet has a diaper changing station."),
-								fieldWithPath("unisex").description("Indicates if the toilet is unisex."),
-								fieldWithPath("avgRating").description("Average overall rating of the toilet."),
-								fieldWithPath("avgCleanliness").description(
-									"Average cleanliness rating of the toilet.")
+								fieldWithPath("[].coord.lat").description("Latitude of the toilet."),
+								fieldWithPath("[].coord.lng").description("Longitude of the toilet.")
 							)
 							.build()
 
@@ -128,7 +81,7 @@ class ToiletControllerTest {
 	@Test
 	void postToiletReview() throws Exception {
 		FixtureMonkey fixtureMonkey = FixtureMonkey.create();
-		var id = 12L;
+		var id = 1L;
 		var reviewRequest = fixtureMonkey.giveMeBuilder(ReviewRequest.class)
 			.set("stars", Arbitraries.integers().between(1, 5))
 			.sample();
