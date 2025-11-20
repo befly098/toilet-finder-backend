@@ -1,61 +1,63 @@
 package io.seorin.ddongkan.dto;
 
+import org.locationtech.jts.geom.Point;
+
 import io.seorin.ddongkan.entity.Toilet;
 
-// TODO: 불필요한 필드 제거
-// id, name, lat, long 빼고 없애자
-public record ToiletResponse(
-	Long id,
-	String name,
-	Double lat,
-	Double lng
-) {
+public class ToiletResponse {
+	private final Long id;
+	private final String name;
+	private final Coord coord;
+
+	public ToiletResponse(Long id, String name, Coord coord) {
+		this.id = id;
+		this.name = name;
+		this.coord = coord;
+	}
+
 	public static ToiletResponse from(Toilet toilet) {
-		return ToiletResponse.builder()
-			.id(toilet.getId())
-			.name(toilet.getName())
-			.lat(toilet.getPosition() != null ? toilet.getPosition().getY() : null)
-			.lng(toilet.getPosition() != null ? toilet.getPosition().getX() : null)
-			.build();
+		return new ToiletResponse(
+			toilet.getId(),
+			toilet.getName(),
+			Coord.from(toilet.getPosition())
+		);
 	}
 
-	public static Builder builder() {
-		return new Builder();
+	@Override
+	public String toString() {
+		// @checkstyle:off
+		return "ToiletResponse{" +
+			"id=" + id +
+			", name='" + name + '\'' +
+			", coord=" + coord +
+			'}';
+		// @checkstyle:on
 	}
 
-	public static class Builder {
-		private Long id;
-		private String name;
-		private Double lat;
-		private Double lng;
+	public static class Coord {
+		private final Double lat;
+		private final Double lng;
 
-		public Builder id(Long id) {
-			this.id = id;
-			return this;
-		}
-
-		public Builder name(String name) {
-			this.name = name;
-			return this;
-		}
-
-		public Builder lat(Double lat) {
+		private Coord(Double lat, Double lng) {
 			this.lat = lat;
-			return this;
-		}
-
-		public Builder lng(Double lng) {
 			this.lng = lng;
-			return this;
 		}
 
-		public ToiletResponse build() {
-			return new ToiletResponse(
-				id,
-				name,
-				lat,
-				lng
+		public static Coord from(Point point) {
+			return new Coord(
+				point != null ? point.getY() : null,
+				point != null ? point.getX() : null
 			);
+		}
+
+		@Override
+		public String toString() {
+			// @checkstyle:off
+			return "Coord{" +
+				"lat=" + lat +
+				", lng=" + lng +
+				'}';
+			// @checkstyle:on
 		}
 	}
 }
