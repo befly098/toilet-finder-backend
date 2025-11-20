@@ -40,44 +40,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/api-v1-toilets1928741375"
+                $ref: "#/components/schemas/api-v1-toilets-497603654"
               examples:
                 get-toilets:
-                  value: "[{\"id\":12,\"name\":\"서울역 2F 화장실\",\"address\":\"서울 중구\
-                    \ 한강대로 405\",\"lat\":37.5547,\"lng\":126.9706,\"openHours\":\"\
-                    06:00-23:00\",\"accessible\":true,\"diaper\":true,\"unisex\":false,\"\
-                    avgRating\":4,\"avgCleanliness\":4},{\"id\":13,\"name\":\"남산공원\
-                    \ 남측 화장실\",\"address\":\"서울 용산구 소월로 343\",\"lat\":37.5512,\"lng\"\
-                    :126.9882,\"openHours\":\"24시간\",\"accessible\":true,\"diaper\"\
-                    :false,\"unisex\":true,\"avgRating\":4,\"avgCleanliness\":3},{\"\
-                    id\":14,\"name\":\"시청역 지하 화장실\",\"address\":\"서울 중구 세종대로 110\"\
-                    ,\"lat\":37.5657,\"lng\":126.9769,\"openHours\":\"05:30-24:00\"\
-                    ,\"accessible\":true,\"diaper\":true,\"unisex\":false,\"avgRating\"\
-                    :4,\"avgCleanliness\":4},{\"id\":15,\"name\":\"홍대입구역 9번출구 인근\"\
-                    ,\"address\":\"서울 마포구 양화로 160\",\"lat\":37.5575,\"lng\":126.9236,\"\
-                    openHours\":\"06:00-24:00\",\"accessible\":false,\"diaper\":true,\"\
-                    unisex\":true,\"avgRating\":4,\"avgCleanliness\":4},{\"id\":16,\"\
-                    name\":\"건대입구 공중화장실\",\"address\":\"서울 광진구 능동로 90\",\"lat\":37.5403,\"\
-                    lng\":127.07,\"openHours\":\"07:00-22:00\",\"accessible\":true,\"\
-                    diaper\":false,\"unisex\":false,\"avgRating\":4,\"avgCleanliness\"\
-                    :4},{\"id\":17,\"name\":\"잠실역 롯데월드몰 지하\",\"address\":\"서울 송파구\
-                    \ 올림픽로 300\",\"lat\":37.5133,\"lng\":127.1002,\"openHours\":\"\
-                    10:00-22:00\",\"accessible\":true,\"diaper\":true,\"unisex\":false,\"\
-                    avgRating\":3,\"avgCleanliness\":3},{\"id\":18,\"name\":\"강남역\
-                    \ 11번출구 공중화장실\",\"address\":\"서울 강남구 테헤란로 101\",\"lat\":37.4981,\"\
-                    lng\":127.0276,\"openHours\":\"06:00-23:30\",\"accessible\":true,\"\
-                    diaper\":true,\"unisex\":true,\"avgRating\":4,\"avgCleanliness\"\
-                    :4},{\"id\":19,\"name\":\"서울숲 산책로 화장실\",\"address\":\"서울 성동구 서\
-                    울숲2길 50\",\"lat\":37.5446,\"lng\":127.037,\"openHours\":\"06:00-22:00\"\
-                    ,\"accessible\":true,\"diaper\":false,\"unisex\":true,\"avgRating\"\
-                    :4,\"avgCleanliness\":4},{\"id\":20,\"name\":\"이태원역 광장 화장실\",\"\
-                    address\":\"서울 용산구 이태원로 177\",\"lat\":37.5348,\"lng\":126.9946,\"\
-                    openHours\":\"24시간\",\"accessible\":false,\"diaper\":false,\"\
-                    unisex\":true,\"avgRating\":4,\"avgCleanliness\":4},{\"id\":21,\"\
-                    name\":\"여의도 공원 중앙\",\"address\":\"서울 영등포구 여의공원로 68\",\"lat\"\
-                    :37.5259,\"lng\":126.927,\"openHours\":\"05:00-23:00\",\"accessible\"\
-                    :true,\"diaper\":true,\"unisex\":false,\"avgRating\":4,\"avgCleanliness\"\
-                    :4}]"
+                  value: "[{\"id\":1,\"name\":\"강남역 공중화장실\",\"coord\":{\"lat\":37.4979,\"\
+                    lng\":127.0286}},{\"id\":2,\"name\":\"역삼 문화센터 화장실\",\"coord\"\
+                    :{\"lat\":37.5009,\"lng\":127.0372}},{\"id\":3,\"name\":\"선릉역\
+                    \ 10번출구 화장실\",\"coord\":{\"lat\":37.5046,\"lng\":127.0485}},{\"\
+                    id\":4,\"name\":\"삼성역 코엑스몰 화장실\",\"coord\":{\"lat\":37.5124,\"\
+                    lng\":127.0592}},{\"id\":5,\"name\":\"을지로입구역 지하상가 화장실\",\"coord\"\
+                    :{\"lat\":37.5661,\"lng\":126.9823}},{\"id\":6,\"name\":\"서울시청\
+                    \ 시민청 화장실\",\"coord\":{\"lat\":37.5663,\"lng\":126.978}},{\"id\"\
+                    :7,\"name\":\"홍대입구역 9번출구 화장실\",\"coord\":{\"lat\":37.5571,\"lng\"\
+                    :126.9237}},{\"id\":8,\"name\":\"신촌역 공중화장실\",\"coord\":{\"lat\"\
+                    :37.5595,\"lng\":126.9378}},{\"id\":9,\"name\":\"건대입구역 스타시티 화장\
+                    실\",\"coord\":{\"lat\":37.54,\"lng\":127.0704}},{\"id\":10,\"\
+                    name\":\"여의도 공원 화장실\",\"coord\":{\"lat\":37.5281,\"lng\":126.9225}}]"
   /api/v1/toilets/{id}:
     get:
       tags:
@@ -122,47 +100,17 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: "#/components/schemas/api-v1-toilets-id973051148"
+              $ref: "#/components/schemas/api-v1-toilets-id-166555843"
             examples:
               post-toilet-review:
-                value: "{\"stars\":1,\"comment\":\"\",\"likes\":{\"cleanliness\":false,\"\
-                  toiletPaper\":false,\"waterPressure\":true,\"hotWater\":true,\"\
+                value: "{\"stars\":2,\"comment\":null,\"likes\":{\"cleanliness\":true,\"\
+                  toiletPaper\":true,\"waterPressure\":false,\"hotWater\":false,\"\
                   safety\":false}}"
       responses:
         "200":
           description: "200"
 components:
   schemas:
-    api-v1-toilets-id973051148:
-      type: object
-      properties:
-        comment:
-          type: string
-          description: Optional comment about the toilet.
-        stars:
-          type: number
-          description: Star rating for the toilet (1 to 5).
-        likes:
-          type: object
-          properties:
-            safety:
-              type: boolean
-              description: Indicates if the reviewer felt safe using the toilet.
-            waterPressure:
-              type: boolean
-              description: Indicates if the reviewer liked the water pressure.
-            toiletPaper:
-              type: boolean
-              description: Indicates if the reviewer liked the availability of toilet
-                paper.
-            hotWater:
-              type: boolean
-              description: Indicates if the reviewer liked the availability of hot
-                water.
-            cleanliness:
-              type: boolean
-              description: Indicates if the reviewer liked the cleanliness of the
-                toilet.
     api-v1-toilets-id1088392552:
       type: object
       properties:
@@ -199,43 +147,52 @@ components:
         avgCleanliness:
           type: number
           description: Average cleanliness rating of the toilet.
-    api-v1-toilets1928741375:
+    api-v1-toilets-497603654:
       type: array
       description: List of nearby toilets.
       items:
         type: object
         properties:
-          unisex:
-            type: boolean
-            description: Indicates if the toilet is unisex.
-          openHours:
-            type: string
-            description: Operating hours of the toilet.
-          accessible:
-            type: boolean
-            description: Indicates if the toilet is accessible for disabled individuals.
-          address:
-            type: string
-            description: Address of the toilet.
-          lng:
-            type: number
-            description: Longitude of the toilet.
+          coord:
+            type: object
+            properties:
+              lng:
+                type: number
+                description: Longitude of the toilet.
+              lat:
+                type: number
+                description: Latitude of the toilet.
           name:
             type: string
             description: Name of the toilet.
-          avgRating:
-            type: number
-            description: Average overall rating of the toilet.
-          diaper:
-            type: boolean
-            description: Indicates if the toilet has a diaper changing station.
           id:
             type: number
             description: Unique identifier of the toilet.
-          lat:
-            type: number
-            description: Latitude of the toilet.
-          avgCleanliness:
-            type: number
-            description: Average cleanliness rating of the toilet.
         description: List of nearby toilets.
+    api-v1-toilets-id-166555843:
+      type: object
+      properties:
+        stars:
+          type: number
+          description: Star rating for the toilet (1 to 5).
+        likes:
+          type: object
+          properties:
+            safety:
+              type: boolean
+              description: Indicates if the reviewer felt safe using the toilet.
+            waterPressure:
+              type: boolean
+              description: Indicates if the reviewer liked the water pressure.
+            toiletPaper:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of toilet
+                paper.
+            hotWater:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of hot
+                water.
+            cleanliness:
+              type: boolean
+              description: Indicates if the reviewer liked the cleanliness of the
+                toilet.
