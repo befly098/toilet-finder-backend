@@ -38,4 +38,43 @@ public class ToiletDetailResponse extends ToiletResponse {
 			toilet.isUnisex()
 		);
 	}
+
+	public String getAddress() {
+		return this.address;
+	}
+
+	public ZonedDateTime getOpenAt() {
+		return this.openAt;
+	}
+
+	public ZonedDateTime getCloseAt() {
+		return this.closeAt;
+	}
+
+	public Boolean getAccessible() {
+		return this.accessible;
+	}
+
+	public Boolean getDiaper() {
+		return this.diaper;
+	}
+
+	public Boolean getUnisex() {
+		return this.unisex;
+	}
+
+	@Override
+	public String toString() {
+		// @checkstyle:off
+		return super.toString() +
+			"ToiletDetailResponse{" +
+			"address='" + address + '\'' +
+			", openAt=" + openAt +
+			", closeAt=" + closeAt +
+			", accessible=" + accessible +
+			", diaper=" + diaper +
+			", unisex=" + unisex +
+			'}';
+		// @checkstyle:on
+	}
 }

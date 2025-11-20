@@ -3,6 +3,7 @@ package io.seorin.ddongkan.entity;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.locationtech.jts.geom.Point;
@@ -18,7 +19,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "toilet",
 	indexes = {
-		@Index(name = "idx_toilet_lat_lng", columnList = "lat,lng"),
 		@Index(name = "idx_toilet_name", columnList = "name")
 	})
 public class Toilet {
@@ -56,10 +56,11 @@ public class Toilet {
 	// 메타
 	@CreationTimestamp
 	@Column(nullable = false, updatable = false)
+	@ColumnDefault("CURRENT_TIMESTAMP")
 	private Instant createdAt;
 
 	@UpdateTimestamp
-	@Column(nullable = false)
+	@Column
 	private Instant updatedAt;
 
 	public Toilet() {
@@ -123,5 +124,49 @@ public class Toilet {
 
 	public Instant getUpdatedAt() {
 		return updatedAt;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
+	}
+
+	public void setOpenAt(ZonedDateTime openAt) {
+		this.openAt = openAt;
+	}
+
+	public void setCloseAt(ZonedDateTime closeAt) {
+		this.closeAt = closeAt;
+	}
+
+	public void setAccessible(boolean accessible) {
+		this.accessible = accessible;
+	}
+
+	public void setDiaper(boolean diaper) {
+		this.diaper = diaper;
+	}
+
+	public void setUnisex(boolean unisex) {
+		this.unisex = unisex;
+	}
+
+	public void setCreatedAt(Instant createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setUpdatedAt(Instant updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }

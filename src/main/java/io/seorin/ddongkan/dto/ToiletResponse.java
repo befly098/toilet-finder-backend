@@ -23,13 +23,25 @@ public class ToiletResponse {
 		);
 	}
 
+	public Long getId() {
+		return this.id;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public Coord getCoord() {
+		return this.coord;
+	}
+
 	@Override
 	public String toString() {
 		// @checkstyle:off
 		return "ToiletResponse{" +
-			"id=" + id +
-			", name='" + name + '\'' +
-			", coord=" + coord +
+			"id=" + this.id +
+			", name='" + this.name + '\'' +
+			", coord=" + this.coord +
 			'}';
 		// @checkstyle:on
 	}
@@ -50,12 +62,20 @@ public class ToiletResponse {
 			);
 		}
 
+		public Double getLat() {
+			return this.lat;
+		}
+
+		public Double getLng() {
+			return this.lng;
+		}
+
 		@Override
 		public String toString() {
 			// @checkstyle:off
 			return "Coord{" +
-				"lat=" + lat +
-				", lng=" + lng +
+				"lat=" + this.lat +
+				", lng=" + this.lng +
 				'}';
 			// @checkstyle:on
 		}
