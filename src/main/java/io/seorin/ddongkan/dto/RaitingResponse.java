@@ -34,7 +34,9 @@ public class RaitingResponse {
 	}
 
 	private static Double setDeimicalPointToOne(Double value) {
-		if (value == null) return null;
+		if (value == null) {
+			return null;
+		}
 		return Math.round(value * 10) / 10.0;
 	}
 }
