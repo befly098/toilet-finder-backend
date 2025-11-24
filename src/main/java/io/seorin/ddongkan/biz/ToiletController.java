@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.seorin.ddongkan.dto.ReviewRequest;
+import io.seorin.ddongkan.dto.ToiletDetailResponse;
 import io.seorin.ddongkan.dto.ToiletResponse;
 import jakarta.validation.Valid;
 
@@ -33,16 +34,15 @@ public class ToiletController {
 		@RequestParam(value = "radius", required = false, defaultValue = "5000") Double radius
 	) {
 
-		var result = this.toiletService.selectAllPointsWithinRadius(lat, lng, radius);
+		var result = this.toiletService.getToiletWithinRadius(lat, lng, radius);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ToiletResponse> getToiletById(@PathVariable("id") Long id) {
-		var toilet = this.toiletService.getToiletById(id);
-		var response = ToiletResponse.from(toilet);
-		return new ResponseEntity<>(response, HttpStatus.OK);
+	public ResponseEntity<ToiletDetailResponse> getToiletDetail(@PathVariable("id") Long id) {
+		var result = this.toiletService.getToiletDetailById(id);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PostMapping("/{id}")
