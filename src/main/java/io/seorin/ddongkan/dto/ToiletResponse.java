@@ -9,7 +9,7 @@ public class ToiletResponse {
 	private final String name;
 	private final Coord coord;
 
-	public ToiletResponse(Long id, String name, Coord coord) {
+	protected ToiletResponse(Long id, String name, Coord coord) {
 		this.id = id;
 		this.name = name;
 		this.coord = coord;

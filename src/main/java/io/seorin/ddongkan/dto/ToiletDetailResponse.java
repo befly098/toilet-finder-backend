@@ -13,7 +13,7 @@ public class ToiletDetailResponse extends ToiletResponse {
 	private Boolean diaper;
 	private Boolean unisex;
 
-	public ToiletDetailResponse(Long id, String name, Coord coord, String address, ZonedDateTime openAt,
+	private ToiletDetailResponse(Long id, String name, Coord coord, String address, ZonedDateTime openAt,
 		ZonedDateTime closeAt, Boolean accessible, Boolean diaper, Boolean unisex) {
 		super(id, name, coord);
 		this.address = address;
