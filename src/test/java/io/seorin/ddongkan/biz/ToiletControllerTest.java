@@ -23,6 +23,7 @@ import net.jqwik.api.Arbitraries;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.seorin.ddongkan.biz.descriptors.ResponseFieldsDescriptors;
 import io.seorin.ddongkan.dto.ReviewRequest;
 
 import com.navercorp.fixturemonkey.FixtureMonkey;
@@ -65,14 +66,11 @@ class ToiletControllerTest {
 									"Radius (in meters) to search for nearby toilets. Default is 5000 meters.")
 							)
 							.responseFields(
-								fieldWithPath("[]").description("List of nearby toilets."),
-								fieldWithPath("[].id").description("Unique identifier of the toilet."),
-								fieldWithPath("[].name").description("Name of the toilet."),
-								fieldWithPath("[].coord.lat").description("Latitude of the toilet."),
-								fieldWithPath("[].coord.lng").description("Longitude of the toilet.")
+								ResponseFieldsDescriptors.asList(
+									ResponseFieldsDescriptors.TOILET_LIST_FIELDS
+								)
 							)
 							.build()
-
 					)
 				)
 			);
@@ -113,6 +111,42 @@ class ToiletControllerTest {
 									"Indicates if the reviewer liked the availability of hot water."),
 								fieldWithPath("likes.safety").description(
 									"Indicates if the reviewer felt safe using the toilet.")
+							)
+							.build()
+
+					)
+				)
+			);
+	}
+
+	@Test
+	void getToiletDetail() throws Exception {
+		var id = 1L;
+
+		mockMvc.perform(get("/api/v1/toilets/{id}", id))
+			.andExpect(status().isOk())
+			.andDo(
+				document(
+					"get-toilet-detail",
+					resource(
+						ResourceSnippetParameters.builder()
+							.description("Retrieve detailed information about a specific toilet by its ID.")
+							.pathParameters(
+								parameterWithName("id").description("Unique identifier of the toilet.")
+							)
+							.responseFields(
+								ResponseFieldsDescriptors
+									.toListWithIn(
+										ResponseFieldsDescriptors.TOILET_LIST_FIELDS,
+										fieldWithPath("address").description("Address of the toilet."),
+										fieldWithPath("openAt").description("Opening time of the toilet."),
+										fieldWithPath("closeAt").description("Closing time of the toilet."),
+										fieldWithPath("accessible").description(
+											"Indicates if the toilet is accessible."),
+										fieldWithPath("diaper").description(
+											"Indicates if the toilet has diaper facilities."),
+										fieldWithPath("unisex").description("Indicates if the toilet is unisex.")
+									)
 							)
 							.build()
 
