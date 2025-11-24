@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import org.springframework.restdocs.payload.FieldDescriptor;
-import org.springframework.restdocs.payload.ResponseFieldsSnippet;
 
 public class ResponseFieldsDescriptors {
 	public static final FieldDescriptor[] TOILET_RESPONSE_FIELDS = new FieldDescriptor[] {
