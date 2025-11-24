@@ -64,6 +64,7 @@ class ToiletControllerTest {
 									"Longitude of the location to search nearby toilets."),
 								parameterWithName("radius").description(
 									"Radius (in meters) to search for nearby toilets. Default is 5000 meters.")
+									.optional()
 							)
 							.responseFields(
 								ResponseFieldsDescriptors.asList(

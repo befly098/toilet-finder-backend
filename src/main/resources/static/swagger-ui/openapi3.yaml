@@ -31,7 +31,7 @@ paths:
         in: query
         description: Radius (in meters) to search for nearby toilets. Default is 5000
           meters.
-        required: true
+        required: false
         schema:
           type: string
       responses:
@@ -105,47 +105,17 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: "#/components/schemas/api-v1-toilets-id973051148"
+              $ref: "#/components/schemas/api-v1-toilets-id-166555843"
             examples:
               post-toilet-review:
-                value: "{\"stars\":5,\"comment\":\"어ᜢ큕ﶸῈ멗哋傜헴ᄃ玷凁ⶫȬ염ᣊ秄餮芭瀫烟쑶࠰ꖄ\",\"likes\"\
-                  :{\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\":true,\"\
-                  hotWater\":false,\"safety\":false}}"
+                value: "{\"stars\":4,\"comment\":null,\"likes\":{\"cleanliness\":false,\"\
+                  toiletPaper\":false,\"waterPressure\":false,\"hotWater\":true,\"\
+                  safety\":true}}"
       responses:
         "200":
           description: "200"
 components:
   schemas:
-    api-v1-toilets-id973051148:
-      type: object
-      properties:
-        comment:
-          type: string
-          description: Optional comment about the toilet.
-        stars:
-          type: number
-          description: Star rating for the toilet (1 to 5).
-        likes:
-          type: object
-          properties:
-            safety:
-              type: boolean
-              description: Indicates if the reviewer felt safe using the toilet.
-            waterPressure:
-              type: boolean
-              description: Indicates if the reviewer liked the water pressure.
-            toiletPaper:
-              type: boolean
-              description: Indicates if the reviewer liked the availability of toilet
-                paper.
-            hotWater:
-              type: boolean
-              description: Indicates if the reviewer liked the availability of hot
-                water.
-            cleanliness:
-              type: boolean
-              description: Indicates if the reviewer liked the cleanliness of the
-                toilet.
     api-v1-toilets1884267738:
       type: array
       description: List of items
@@ -219,3 +189,30 @@ components:
         lat:
           type: number
           description: Latitude of the toilet.
+    api-v1-toilets-id-166555843:
+      type: object
+      properties:
+        stars:
+          type: number
+          description: Star rating for the toilet (1 to 5).
+        likes:
+          type: object
+          properties:
+            safety:
+              type: boolean
+              description: Indicates if the reviewer felt safe using the toilet.
+            waterPressure:
+              type: boolean
+              description: Indicates if the reviewer liked the water pressure.
+            toiletPaper:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of toilet
+                paper.
+            hotWater:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of hot
+                water.
+            cleanliness:
+              type: boolean
+              description: Indicates if the reviewer liked the cleanliness of the
+                toilet.
