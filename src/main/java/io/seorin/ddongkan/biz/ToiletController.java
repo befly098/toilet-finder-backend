@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.seorin.ddongkan.dto.RaitingResponse;
 import io.seorin.ddongkan.dto.ReviewRequest;
 import io.seorin.ddongkan.dto.ToiletDetailResponse;
 import io.seorin.ddongkan.dto.ToiletResponse;
@@ -43,6 +44,11 @@ public class ToiletController {
 	public ResponseEntity<ToiletDetailResponse> getToiletDetail(@PathVariable("id") Long id) {
 		var result = this.toiletService.getToiletDetailById(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@GetMapping("/{id}/rates")
+	public ResponseEntity<RaitingResponse> getToiletRates(@PathVariable("id") Long id) {
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 	}
 
 	@PostMapping("/{id}")

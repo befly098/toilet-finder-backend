@@ -40,6 +40,7 @@ public class ToiletService {
 		return toilets.stream().map(ToiletResponse::from).toList();
 	}
 
+	// TODO: 함수 이름 변경 ( => getToiletDetail )
 	public ToiletDetailResponse getToiletDetailById(Long id) {
 		var toilet = this.toiletRepository.findById(id)
 			.orElseThrow(() -> new ResponseStatusException(
@@ -59,5 +60,10 @@ public class ToiletService {
 		;
 		var review = Review.toiletReviewOf(toilet, reviewRequest);
 		reviewRepository.save(review);
+	}
+
+	public List<Review> getReviews(Long id) {
+		// 화장실 및 리뷰 조인 및 조회
+		return List.of();
 	}
 }
