@@ -9,7 +9,7 @@ import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.restdocs.payload.ResponseFieldsSnippet;
 
 public class ResponseFieldsDescriptors {
-	public static final FieldDescriptor[] TOILET_LIST_FIELDS = new FieldDescriptor[] {
+	public static final FieldDescriptor[] TOILET_RESPONSE_FIELDS = new FieldDescriptor[] {
 		fieldWithPath("id").description("Unique identifier of the toilet."),
 		fieldWithPath("name").description("Name of the toilet."),
 		fieldWithPath("coord.lat").description("Latitude of the toilet."),

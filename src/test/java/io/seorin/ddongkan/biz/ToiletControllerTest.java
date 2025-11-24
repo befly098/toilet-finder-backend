@@ -68,7 +68,7 @@ class ToiletControllerTest {
 							)
 							.responseFields(
 								ResponseFieldsDescriptors.asList(
-									ResponseFieldsDescriptors.TOILET_LIST_FIELDS
+									ResponseFieldsDescriptors.TOILET_RESPONSE_FIELDS
 								)
 							)
 							.build()
@@ -138,7 +138,7 @@ class ToiletControllerTest {
 							.responseFields(
 								ResponseFieldsDescriptors
 									.toListWithIn(
-										ResponseFieldsDescriptors.TOILET_LIST_FIELDS,
+										ResponseFieldsDescriptors.TOILET_RESPONSE_FIELDS,
 										fieldWithPath("address").description("Address of the toilet."),
 										fieldWithPath("openAt").description("Opening time of the toilet."),
 										fieldWithPath("closeAt").description("Closing time of the toilet."),
