@@ -36,7 +36,7 @@ public class ToiletService {
 		this.raitingRepository = raitingRepository;
 	}
 
-	public List<ToiletResponse> getToiletWithinRadius(Double lat, Double lng, Double radius) {
+	public List<ToiletResponse> getToilets(Double lat, Double lng, Double radius) {
 		var userPoint = geomFactory.getGeometryFactory().createPoint(new Coordinate(lng, lat));
 		List<Toilet> toilets = this.toiletRepository.findToilets(userPoint, radius);
 		// TODO: empty list인 경우, 404 에러 리턴
@@ -45,7 +45,7 @@ public class ToiletService {
 	}
 
 	// TODO: 함수 이름 변경 ( => getToiletDetail )
-	public ToiletDetailResponse getToiletDetailById(Long id) {
+	public ToiletDetailResponse getToiletDetail(Long id) {
 		var toilet = this.toiletRepository.findById(id)
 			.orElseThrow(() -> new ResponseStatusException(
 				HttpStatus.NOT_FOUND,

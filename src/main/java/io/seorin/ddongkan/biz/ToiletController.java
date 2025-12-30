@@ -36,14 +36,14 @@ public class ToiletController {
 		@RequestParam(value = "radius", required = false, defaultValue = "5000") Double radius
 	) {
 
-		var result = this.toiletService.getToiletWithinRadius(lat, lng, radius);
+		var result = this.toiletService.getToilets(lat, lng, radius);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<ToiletDetailResponse> getToiletDetail(@PathVariable("id") Long id) {
-		var result = this.toiletService.getToiletDetailById(id);
+		var result = this.toiletService.getToiletDetail(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
@@ -54,7 +54,7 @@ public class ToiletController {
 	}
 
 	@PostMapping("/{id}")
-	public ResponseEntity<Void> postToiletReview(
+	public ResponseEntity<Void> addReview(
 		@PathVariable("id") Long id,
 		@Valid @RequestBody final ReviewRequest reviewRequest) {
 		this.toiletService.addReview(id, reviewRequest);
