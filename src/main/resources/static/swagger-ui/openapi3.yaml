@@ -105,17 +105,73 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: "#/components/schemas/api-v1-toilets-id-166555843"
+              $ref: "#/components/schemas/api-v1-toilets-id973051148"
             examples:
               post-toilet-review:
-                value: "{\"stars\":4,\"comment\":null,\"likes\":{\"cleanliness\":false,\"\
-                  toiletPaper\":false,\"waterPressure\":false,\"hotWater\":true,\"\
-                  safety\":true}}"
+                value: "{\"stars\":4,\"comment\":\"죗㱤ᛅᷞ構ᒪ䉼ﺷꊻʍ롩ꬥﻒﴉ詑ਓꢉ汝ﳪ\",\"likes\"\
+                  :{\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\":false,\"\
+                  hotWater\":false,\"safety\":true}}"
       responses:
         "200":
           description: "200"
+  /api/v1/toilets/{id}/rating:
+    get:
+      tags:
+      - api
+      summary: Retrieve rating information about a specific toilet by its ID.
+      description: Retrieve rating information about a specific toilet by its ID.
+      operationId: get-toilet-rating
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api-v1-toilets-id-rating-2058800511"
+              examples:
+                get-toilet-rating:
+                  value: "{\"avgStars\":3.4,\"avgCleanliness\":3.1,\"avgToiletPaper\"\
+                    :2.5,\"avgWaterPressure\":1.9,\"avgHotWater\":1.9,\"avgSafety\"\
+                    :3.1}"
 components:
   schemas:
+    api-v1-toilets-id973051148:
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Optional comment about the toilet.
+        stars:
+          type: number
+          description: Star rating for the toilet (1 to 5).
+        likes:
+          type: object
+          properties:
+            safety:
+              type: boolean
+              description: Indicates if the reviewer felt safe using the toilet.
+            waterPressure:
+              type: boolean
+              description: Indicates if the reviewer liked the water pressure.
+            toiletPaper:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of toilet
+                paper.
+            hotWater:
+              type: boolean
+              description: Indicates if the reviewer liked the availability of hot
+                water.
+            cleanliness:
+              type: boolean
+              description: Indicates if the reviewer liked the cleanliness of the
+                toilet.
     api-v1-toilets1884267738:
       type: array
       description: List of items
@@ -138,6 +194,27 @@ components:
             type: number
             description: Unique identifier of the toilet.
         description: List of items
+    api-v1-toilets-id-rating-2058800511:
+      type: object
+      properties:
+        avgHotWater:
+          type: number
+          description: Average hot water availability rating.
+        avgStars:
+          type: number
+          description: Average star rating of the toilet.
+        avgSafety:
+          type: number
+          description: Average safety rating.
+        avgToiletPaper:
+          type: number
+          description: Average toilet paper availability rating.
+        avgWaterPressure:
+          type: number
+          description: Average water pressure rating.
+        avgCleanliness:
+          type: number
+          description: Average cleanliness rating.
     api-v1-toilets-id-522854228:
       type: object
       properties:
@@ -189,30 +266,3 @@ components:
         lat:
           type: number
           description: Latitude of the toilet.
-    api-v1-toilets-id-166555843:
-      type: object
-      properties:
-        stars:
-          type: number
-          description: Star rating for the toilet (1 to 5).
-        likes:
-          type: object
-          properties:
-            safety:
-              type: boolean
-              description: Indicates if the reviewer felt safe using the toilet.
-            waterPressure:
-              type: boolean
-              description: Indicates if the reviewer liked the water pressure.
-            toiletPaper:
-              type: boolean
-              description: Indicates if the reviewer liked the availability of toilet
-                paper.
-            hotWater:
-              type: boolean
-              description: Indicates if the reviewer liked the availability of hot
-                water.
-            cleanliness:
-              type: boolean
-              description: Indicates if the reviewer liked the cleanliness of the
-                toilet.

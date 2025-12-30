@@ -155,4 +155,35 @@ class ToiletControllerTest {
 				)
 			);
 	}
+
+	@Test
+	void getRaiting() throws Exception {
+		var id = 1L;
+
+		mockMvc.perform(get("/api/v1/toilets/{id}/rating", id))
+			.andExpect(status().isOk())
+			.andDo(
+				document(
+					"get-toilet-rating",
+					resource(
+						ResourceSnippetParameters.builder()
+							.description("Retrieve rating information about a specific toilet by its ID.")
+							.pathParameters(
+								parameterWithName("id").description("Unique identifier of the toilet.")
+							)
+							.responseFields(
+								fieldWithPath("avgStars").description("Average star rating of the toilet."),
+								fieldWithPath("avgCleanliness").description("Average cleanliness rating."),
+								fieldWithPath("avgToiletPaper").description("Average toilet paper availability rating."),
+								fieldWithPath("avgWaterPressure").description("Average water pressure rating."),
+								fieldWithPath("avgHotWater").description("Average hot water availability rating."),
+								fieldWithPath("avgSafety").description("Average safety rating.")
+							)
+							.build()
+
+					)
+				)
+			);
+
+	}
 }

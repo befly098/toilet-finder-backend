@@ -3,6 +3,7 @@ package io.seorin.ddongkan.biz;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,9 +47,10 @@ public class ToiletController {
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
-	@GetMapping("/{id}/rates")
-	public ResponseEntity<RaitingResponse> getToiletRates(@PathVariable("id") Long id) {
-		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	@GetMapping(value = "/{id}/rating", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RaitingResponse> getRating(@PathVariable("id") Long id) {
+		var result = toiletService.getRating(id);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@PostMapping("/{id}")

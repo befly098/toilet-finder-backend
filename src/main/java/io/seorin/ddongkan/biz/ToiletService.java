@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import io.seorin.ddongkan.config.GeomFactory;
+import io.seorin.ddongkan.dto.RaitingResponse;
 import io.seorin.ddongkan.dto.ReviewRequest;
 import io.seorin.ddongkan.dto.ToiletDetailResponse;
 import io.seorin.ddongkan.dto.ToiletResponse;
 import io.seorin.ddongkan.entity.Review;
 import io.seorin.ddongkan.entity.Toilet;
+import io.seorin.ddongkan.repository.RaitingRepository;
 import io.seorin.ddongkan.repository.ReviewRepository;
 import io.seorin.ddongkan.repository.ToiletRepository;
 
@@ -24,12 +26,14 @@ public class ToiletService {
 	private final GeomFactory geomFactory;
 	private final ToiletRepository toiletRepository;
 	private final ReviewRepository reviewRepository;
+	private final RaitingRepository raitingRepository;
 
 	public ToiletService(GeomFactory geomFactory, ToiletRepository toiletRepository,
-		ReviewRepository reviewRepository) {
+		ReviewRepository reviewRepository, RaitingRepository raitingRepository) {
 		this.geomFactory = geomFactory;
 		this.toiletRepository = toiletRepository;
 		this.reviewRepository = reviewRepository;
+		this.raitingRepository = raitingRepository;
 	}
 
 	public List<ToiletResponse> getToiletWithinRadius(Double lat, Double lng, Double radius) {
@@ -62,8 +66,14 @@ public class ToiletService {
 		reviewRepository.save(review);
 	}
 
-	public List<Review> getReviews(Long id) {
-		// 화장실 및 리뷰 조인 및 조회
-		return List.of();
+	public RaitingResponse getRating(Long id) {
+
+		var raiting = this.raitingRepository.findById(id)
+			.orElseThrow(() -> new ResponseStatusException(
+				HttpStatus.NOT_FOUND,
+				"Toilet not found with id: " + id)
+			);
+
+		return RaitingResponse.from(raiting);
 	}
 }
