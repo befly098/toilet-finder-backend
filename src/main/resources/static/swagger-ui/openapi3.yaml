@@ -88,32 +88,6 @@ paths:
                     lng\":127.0286},\"address\":\"서울 강남구 강남대로 390\",\"openAt\":\"\
                     2024-12-31T22:00:00Z\",\"closeAt\":\"2025-01-01T13:00:00Z\",\"\
                     accessible\":true,\"diaper\":true,\"unisex\":false}"
-    post:
-      tags:
-      - api
-      summary: Submit a review for a specific toilet by its ID.
-      description: Submit a review for a specific toilet by its ID.
-      operationId: post-toilet-review
-      parameters:
-      - name: id
-        in: path
-        description: Unique identifier of the toilet.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json;charset=UTF-8:
-            schema:
-              $ref: "#/components/schemas/api-v1-toilets-id973051148"
-            examples:
-              post-toilet-review:
-                value: "{\"stars\":4,\"comment\":\"죗㱤ᛅᷞ構ᒪ䉼ﺷꊻʍ롩ꬥﻒﴉ詑ਓꢉ汝ﳪ\",\"likes\"\
-                  :{\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\":false,\"\
-                  hotWater\":false,\"safety\":true}}"
-      responses:
-        "200":
-          description: "200"
   /api/v1/toilets/{id}/rating:
     get:
       tags:
@@ -137,12 +111,112 @@ paths:
                 $ref: "#/components/schemas/api-v1-toilets-id-rating-2058800511"
               examples:
                 get-toilet-rating:
-                  value: "{\"avgStars\":3.4,\"avgCleanliness\":3.1,\"avgToiletPaper\"\
-                    :2.5,\"avgWaterPressure\":1.9,\"avgHotWater\":1.9,\"avgSafety\"\
-                    :3.1}"
+                  value: "{\"avgStars\":3.7,\"avgCleanliness\":2.9,\"avgToiletPaper\"\
+                    :2.5,\"avgWaterPressure\":2.1,\"avgHotWater\":1.7,\"avgSafety\"\
+                    :2.1}"
+  /api/v1/toilets/{id}/review:
+    post:
+      tags:
+      - api
+      summary: Submit a review for a specific toilet by its ID.
+      description: Submit a review for a specific toilet by its ID.
+      operationId: post-toilet-review
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: "#/components/schemas/api-v1-toilets-id-review973051148"
+            examples:
+              post-toilet-review:
+                value: "{\"stars\":5,\"comment\":\"宵㾖麜鞲뵥橬랷첰힘そ㉝Ṧ﨨㨫⣈썙儔庇釩இ턩ﲉ뛊ꇲⲨꗩ쵤⺸䝥Ŧ朸\
+                  쉤絸艝⩒洆뱽똆М麮쿶ȯ㢎뵥豾꫙옾⺡෥ꪾ㥫℟츇暶峚嘒쐰ឡ駑鄾너鲳✨휆遼Ꞡꕕꢌ핪ꎨ啣随ꪾ⍿蟘岔뢠焭킭២秃縎▽ꗫ෥⥻㈟苫ࠦ䔬쀿낮䰤㭎㈁\
+                  縄餲ꮢ䉜Ꭳ㊊맽₧馱켟狼㦖焾ㅎ‧똙鞝ᕷ㌣෨젠ꩋ㸫崶锭صﯶ㧔쒭⭥층縐綨뱑ᐠ뷵钇賈ꜞ﨟簠एਬ锦乮㡎椉鄷祢〛녎䭄拣右㯼ᮨ梠欳䴞ⅉ嶡嘫擣㦔\
+                  껁馁礉ǘ쑇Ҽ\",\"likes\":{\"cleanliness\":true,\"toiletPaper\":false,\"\
+                  waterPressure\":true,\"hotWater\":true,\"safety\":false}}"
+      responses:
+        "200":
+          description: "200"
+  /api/v1/toilets/{id}/reviews:
+    get:
+      tags:
+      - api
+      summary: Retrieve reviews for a specific toilet by its ID.
+      description: Retrieve reviews for a specific toilet by its ID.
+      operationId: get-toilet-reviews
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: Number of reviews to retrieve per page. Default is 10.
+        required: false
+        schema:
+          type: string
+      - name: index
+        in: query
+        description: Page index for pagination. Default is 0.
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api-v1-toilets-id-reviews181444805"
+              examples:
+                get-toilet-reviews:
+                  value: "[{\"stars\":5,\"comment\":\"宵㾖麜鞲뵥橬랷첰힘そ㉝Ṧ﨨㨫⣈썙儔庇釩இ턩ﲉ뛊ꇲⲨꗩ쵤⺸\
+                    䝥Ŧ朸쉤絸艝⩒洆뱽똆М麮쿶ȯ㢎뵥豾꫙옾⺡෥ꪾ㥫℟츇暶峚嘒쐰ឡ駑鄾너鲳✨휆遼Ꞡꕕꢌ핪ꎨ啣随ꪾ⍿蟘岔뢠焭킭២秃縎▽ꗫ෥⥻㈟苫ࠦ䔬\
+                    쀿낮䰤㭎㈁縄餲ꮢ䉜Ꭳ㊊맽₧馱켟狼㦖焾ㅎ‧똙鞝ᕷ㌣෨젠ꩋ㸫崶锭صﯶ㧔쒭⭥층縐綨뱑ᐠ뷵钇賈ꜞ﨟簠एਬ锦乮㡎椉鄷祢〛녎䭄拣右㯼ᮨ梠\
+                    欳䴞ⅉ嶡嘫擣㦔껁馁礉ǘ쑇Ҽ\",\"cleanliness\":true,\"toiletPaper\":false,\"\
+                    waterPressure\":true,\"hotWater\":true,\"safety\":false,\"createdAt\"\
+                    :\"2026-01-18T11:36:39.710653Z\"},{\"stars\":4,\"comment\":\"叛\
+                    ꔫ댴ꏾႵ负㿕ᓁᅃ洕㦢↛⢑ᙵや쾞瀑噺襃ᚱ滊啊⚝ᬔ뾟ʷ\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2026-01-18T11:36:32.578896Z\"},{\"stars\":5,\"comment\"\
+                    :\"廜뜀앻ၙ宷쓥઻ĉ쌞弙袼賋馿귞౞뭐뱿蜌盏萲䘱근瓴林ཥࢉ⅘糢탼㒶ᫌ吐蚬성惜ಞ籨䒙框빢ꂶᜰ䄤汞﷽헞ㄦ쾁㫨䙡滱鬘燾㮝銯ᆨꢄ㴢觘\
+                    퉡ᇂ鹑悽禬꘺锅狑㑸鉔ꤤ갈爾ἣ鮱溏ᠻ揯떁ᙫ뿃鱽鉞㶴ힱ䛜晎鱶ჰ抎荫ĥ㚟┏ꧫ鼥ռ㌖繫ࡒ뵣幧Ⰵ팛岱軻叫圫槞컟痢⮌‌㟏祼댟頂湞ꯧ䲤ស甀\
+                    傺彳㊏쩐샠쏒᠍쨬淨ま슡효ᤙ㲭錍愂竐쪬ƀ獩⣾琣썍К㧡툂ዧ鹩\",\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2026-01-18T11:36:26.458939Z\"},{\"stars\":2,\"comment\"\
+                    :\"竻藍殊肗ⅷ៖갖牤㄰ᦡ㓕ᰉ䷾뉕ꨝ⦔鉸Ė♝苽ᷣκ헜ꈲ攘폘Ꙓ賓ᥩ鞠ਲ粸㉩ٚ᫧緓䁏籦牁涾搏휽줲梾厎驺戀违厔歏ȏ우딡蠈旦ሶ裥很ﻍ\
+                    赳⒘⋇었ψ묫ﭑ磏兾夙썊䙀쪢꒚見馁핧贠ᒈ饴蔻䘊凮䟿蝅ﴠힷ黺喪請‣눒缛㕲计ַⵚ㺅\",\"cleanliness\":false,\"\
+                    toiletPaper\":false,\"waterPressure\":false,\"hotWater\":true,\"\
+                    safety\":false,\"createdAt\":\"2026-01-18T11:36:14.548925Z\"},{\"\
+                    stars\":2,\"comment\":\"쾔㇣僎뛋罐珕ꓴ븭奦籅嗊ܫ册ᎌᓷꗵ䏔᝞憆돗엎궷⊢灓\",\"cleanliness\"\
+                    :false,\"toiletPaper\":true,\"waterPressure\":false,\"hotWater\"\
+                    :false,\"safety\":false,\"createdAt\":\"2026-01-18T11:34:07.692439Z\"\
+                    },{\"stars\":5,\"comment\":\"蜝얨煼⅋쨈ࣖ蝏諰흀㵭踋陬ꚧ篬湳魧ംꮲ噁彎\",\"cleanliness\"\
+                    :true,\"toiletPaper\":true,\"waterPressure\":false,\"hotWater\"\
+                    :false,\"safety\":true,\"createdAt\":\"2025-12-30T10:42:58.001616Z\"\
+                    },{\"stars\":4,\"comment\":\"죗㱤ᛅᷞ構ᒪ䉼ﺷꊻʍ롩ꬥﻒﴉ詑ਓꢉ汝ﳪ\",\"cleanliness\"\
+                    :false,\"toiletPaper\":true,\"waterPressure\":false,\"hotWater\"\
+                    :false,\"safety\":true,\"createdAt\":\"2025-12-30T10:34:38.36128Z\"\
+                    },{\"stars\":4,\"comment\":null,\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2025-12-30T10:25:55.693716Z\"},{\"stars\":1,\"comment\"\
+                    :\"Ⰽ훳腃㯶瓺驭脮鎓ᛊ烎\",\"cleanliness\":false,\"toiletPaper\":false,\"\
+                    waterPressure\":true,\"hotWater\":true,\"safety\":true,\"createdAt\"\
+                    :\"2025-12-30T10:25:25.127501Z\"},{\"stars\":5,\"comment\":\"어\
+                    ᜢ큕ﶸῈ멗哋傜헴ᄃ玷凁ⶫȬ염ᣊ秄餮芭瀫烟쑶࠰ꖄ\",\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2025-11-24T12:47:55.26414Z\"}]"
 components:
   schemas:
-    api-v1-toilets-id973051148:
+    api-v1-toilets-id-review973051148:
       type: object
       properties:
         comment:
@@ -193,6 +267,37 @@ components:
           id:
             type: number
             description: Unique identifier of the toilet.
+        description: List of items
+    api-v1-toilets-id-reviews181444805:
+      type: array
+      description: List of items
+      items:
+        type: object
+        properties:
+          createdAt:
+            type: string
+            description: Timestamp when the review was created.
+          safety:
+            type: boolean
+            description: Indicates if safety was liked.
+          waterPressure:
+            type: boolean
+            description: Indicates if water pressure was liked.
+          toiletPaper:
+            type: boolean
+            description: Indicates if toilet paper availability was liked.
+          comment:
+            type: string
+            description: Comment provided in the review.
+          stars:
+            type: number
+            description: Star rating given in the review.
+          hotWater:
+            type: boolean
+            description: Indicates if hot water availability was liked.
+          cleanliness:
+            type: boolean
+            description: Indicates if cleanliness was liked.
         description: List of items
     api-v1-toilets-id-rating-2058800511:
       type: object

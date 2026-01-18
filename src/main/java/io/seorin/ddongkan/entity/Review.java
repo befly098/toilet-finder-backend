@@ -84,4 +84,36 @@ public class Review {
 			null
 		);
 	}
+
+	public Integer getStars() {
+		return this.stars;
+	}
+
+	public String getComment() {
+		return this.comment;
+	}
+
+	public boolean isCleanliness() {
+		return this.cleanliness;
+	}
+
+	public boolean isToiletPaper() {
+		return this.toiletPaper;
+	}
+
+	public boolean isWaterPressure() {
+		return this.waterPressure;
+	}
+
+	public boolean isHotWater() {
+		return this.hotWater;
+	}
+
+	public boolean isSafety() {
+		return this.safety;
+	}
+
+	public ZonedDateTime getCreatedAt() {
+		return this.createdAt;
+	}
 }

@@ -15,6 +15,8 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.payload.FieldDescriptor;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -86,7 +88,7 @@ class ToiletControllerTest {
 			.sample();
 		var content = objectMapper.writeValueAsString(reviewRequest);
 
-		mockMvc.perform(post("/api/v1/toilets/{id}", id)
+		mockMvc.perform(post("/api/v1/toilets/{id}/review", id)
 				.content(content)
 				.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
@@ -185,5 +187,56 @@ class ToiletControllerTest {
 				)
 			);
 
+	}
+
+
+	@Test
+	void getReviews() throws Exception {
+		var id = 1L;
+
+		mockMvc.perform(get("/api/v1/toilets/{id}/reviews", id))
+			.andExpect(status().isOk())
+			.andDo(
+				document(
+					"get-toilet-reviews",
+					resource(
+						ResourceSnippetParameters.builder()
+							.description("Retrieve reviews for a specific toilet by its ID.")
+							.queryParameters(
+								parameterWithName("size").description(
+									"Number of reviews to retrieve per page. Default is 10.")
+									.optional(),
+								parameterWithName("index").description(
+									"Page index for pagination. Default is 0.")
+									.optional()
+							)
+							.pathParameters(
+								parameterWithName("id").description("Unique identifier of the toilet.")
+							)
+							.responseFields(
+								ResponseFieldsDescriptors.asList(
+									new FieldDescriptor[] {
+										fieldWithPath("stars").description("Star rating given in the review."),
+										fieldWithPath("comment").description(
+											"Comment provided in the review.").optional().type(JsonFieldType.STRING),
+										fieldWithPath("cleanliness").description(
+											"Indicates if cleanliness was liked."),
+										fieldWithPath("toiletPaper").description(
+											"Indicates if toilet paper availability was liked."),
+										fieldWithPath("waterPressure").description(
+											"Indicates if water pressure was liked."),
+										fieldWithPath("hotWater").description(
+											"Indicates if hot water availability was liked."),
+										fieldWithPath("safety").description("Indicates if safety was liked."),
+										fieldWithPath("createdAt").description(
+											"Timestamp when the review was created.")
+									}
+								)
+							)
+							.build()
+
+					)
+				)
+			);
 	}
 }

@@ -16,15 +16,22 @@ public class ResponseFieldsDescriptors {
 	};
 
 	public static FieldDescriptor[] asList(FieldDescriptor[] fields) {
-		return Stream.concat(
+		var foo = Stream.concat(
 				Stream.of(
 					fieldWithPath("[]").description("List of items")
 				),
 				Arrays.stream(fields)
-					.map(fd -> fieldWithPath("[]." + fd.getPath())
-						.description(fd.getDescription()))
+					.map(fd ->
+					{
+						var tmp = fieldWithPath("[]." + fd.getPath()).description(fd.getDescription());
+						if (fd.isOptional()) tmp.optional();
+						if (fd.getType() != null) tmp.type(fd.getType());
+						return tmp;
+				})
 			)
 			.toArray(FieldDescriptor[]::new);
+
+		return foo;
 	}
 
 	public static FieldDescriptor[] toListWithIn(FieldDescriptor[] fields, FieldDescriptor... additional) {

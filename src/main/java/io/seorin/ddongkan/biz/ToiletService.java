@@ -5,6 +5,7 @@ import java.util.List;
 import org.locationtech.jts.geom.Coordinate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import io.seorin.ddongkan.config.GeomFactory;
 import io.seorin.ddongkan.dto.RaitingResponse;
 import io.seorin.ddongkan.dto.ReviewRequest;
+import io.seorin.ddongkan.dto.ReviewResponse;
 import io.seorin.ddongkan.dto.ToiletDetailResponse;
 import io.seorin.ddongkan.dto.ToiletResponse;
 import io.seorin.ddongkan.entity.Review;
@@ -44,7 +46,6 @@ public class ToiletService {
 		return toilets.stream().map(ToiletResponse::from).toList();
 	}
 
-	// TODO: 함수 이름 변경 ( => getToiletDetail )
 	public ToiletDetailResponse getToiletDetail(Long id) {
 		var toilet = this.toiletRepository.findById(id)
 			.orElseThrow(() -> new ResponseStatusException(
@@ -75,5 +76,13 @@ public class ToiletService {
 			);
 
 		return RaitingResponse.from(raiting);
+	}
+
+	public List<ReviewResponse> getReviews(Long id, Integer size, Integer index) {
+
+		var pageable = PageRequest.of(index, size);
+		var reviewPage = this.reviewRepository.findByToiletIdOrderByCreatedAtDesc(id, pageable);
+
+		return reviewPage.map(ReviewResponse::from).getContent();
 	}
 }
