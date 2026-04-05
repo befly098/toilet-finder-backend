@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import io.seorin.ddongkan.config.GeomFactory;
 import io.seorin.ddongkan.dto.RaitingResponse;
 import io.seorin.ddongkan.dto.ReviewRequest;
 import io.seorin.ddongkan.dto.ReviewResponse;
@@ -24,16 +23,14 @@ import io.seorin.ddongkan.repository.db.ToiletRepository;
 @Service
 public class ToiletService {
 	private static final Logger log = LoggerFactory.getLogger(ToiletService.class);
-	private final GeomFactory geomFactory;
 	private final ToiletRepository toiletRepository;
 	private final RedisToiletRepository redisToiletRepository;
 	private final ReviewRepository reviewRepository;
 	private final RaitingRepository raitingRepository;
 
-	public ToiletService(GeomFactory geomFactory, ToiletRepository toiletRepository,
+	public ToiletService(ToiletRepository toiletRepository,
 		RedisToiletRepository redisToiletRepository,
 		ReviewRepository reviewRepository, RaitingRepository raitingRepository) {
-		this.geomFactory = geomFactory;
 		this.toiletRepository = toiletRepository;
 		this.redisToiletRepository = redisToiletRepository;
 		this.reviewRepository = reviewRepository;
@@ -69,7 +66,6 @@ public class ToiletService {
 				HttpStatus.NOT_FOUND,
 				"Toilet not found with id: " + id)
 			);
-		;
 		var review = Review.toiletReviewOf(toilet, reviewRequest);
 		reviewRepository.save(review);
 	}
