@@ -2,7 +2,6 @@ package io.seorin.ddongkan.biz;
 
 import java.util.List;
 
-import org.locationtech.jts.geom.Coordinate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.PageRequest;
@@ -17,33 +16,41 @@ import io.seorin.ddongkan.dto.ReviewResponse;
 import io.seorin.ddongkan.dto.ToiletDetailResponse;
 import io.seorin.ddongkan.dto.ToiletResponse;
 import io.seorin.ddongkan.entity.Review;
-import io.seorin.ddongkan.entity.Toilet;
-import io.seorin.ddongkan.repository.RaitingRepository;
-import io.seorin.ddongkan.repository.ReviewRepository;
-import io.seorin.ddongkan.repository.ToiletRepository;
+import io.seorin.ddongkan.repository.cache.RedisToiletRepository;
+import io.seorin.ddongkan.repository.db.RaitingRepository;
+import io.seorin.ddongkan.repository.db.ReviewRepository;
+import io.seorin.ddongkan.repository.db.ToiletRepository;
 
 @Service
 public class ToiletService {
 	private static final Logger log = LoggerFactory.getLogger(ToiletService.class);
 	private final GeomFactory geomFactory;
 	private final ToiletRepository toiletRepository;
+	private final RedisToiletRepository redisToiletRepository;
 	private final ReviewRepository reviewRepository;
 	private final RaitingRepository raitingRepository;
 
 	public ToiletService(GeomFactory geomFactory, ToiletRepository toiletRepository,
+		RedisToiletRepository redisToiletRepository,
 		ReviewRepository reviewRepository, RaitingRepository raitingRepository) {
 		this.geomFactory = geomFactory;
 		this.toiletRepository = toiletRepository;
+		this.redisToiletRepository = redisToiletRepository;
 		this.reviewRepository = reviewRepository;
 		this.raitingRepository = raitingRepository;
 	}
 
 	public List<ToiletResponse> getToilets(Double lat, Double lng, Double radius) {
-		var userPoint = geomFactory.getGeometryFactory().createPoint(new Coordinate(lng, lat));
-		List<Toilet> toilets = this.toiletRepository.findToilets(userPoint, radius);
-		// TODO: empty list인 경우, 404 에러 리턴
-		log.debug("toilet count within circle: {}", toilets.size());
-		return toilets.stream().map(ToiletResponse::from).toList();
+		var toilets = this.redisToiletRepository.findNearby(lat, lng, radius);
+		var result = toilets.getContent().stream().map(ToiletResponse::fromCache)
+			.toList();
+		log.debug("toilet count within circle: {}", result.size());
+
+		if (result.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No toilets found nearby");
+		}
+
+		return result;
 	}
 
 	public ToiletDetailResponse getToiletDetail(Long id) {

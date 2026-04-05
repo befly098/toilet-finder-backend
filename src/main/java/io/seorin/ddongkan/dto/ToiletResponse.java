@@ -1,8 +1,11 @@
 package io.seorin.ddongkan.dto;
 
 import org.locationtech.jts.geom.Point;
+import org.springframework.data.geo.GeoResult;
+import org.springframework.data.redis.connection.RedisGeoCommands;
 
 import io.seorin.ddongkan.entity.Toilet;
+import io.seorin.ddongkan.utility.ToiletGeoMember;
 
 public class ToiletResponse {
 	private final Long id;
@@ -20,6 +23,15 @@ public class ToiletResponse {
 			toilet.getId(),
 			toilet.getName(),
 			Coord.from(toilet.getPosition())
+		);
+	}
+
+	public static ToiletResponse fromCache(GeoResult<RedisGeoCommands.GeoLocation<String>> location) {
+		var resolved = ToiletGeoMember.decode(location.getContent().getName());
+		return new ToiletResponse(
+			resolved.id(),
+			resolved.name(),
+			Coord.fromGeoPoint(location.getContent().getPoint())
 		);
 	}
 
@@ -56,6 +68,13 @@ public class ToiletResponse {
 		}
 
 		public static Coord from(Point point) {
+			return new Coord(
+				point != null ? point.getY() : null,
+				point != null ? point.getX() : null
+			);
+		}
+
+		public static Coord fromGeoPoint(org.springframework.data.geo.Point point) {
 			return new Coord(
 				point != null ? point.getY() : null,
 				point != null ? point.getX() : null
