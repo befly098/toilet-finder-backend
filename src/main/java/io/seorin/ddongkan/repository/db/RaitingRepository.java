@@ -1,4 +1,4 @@
-package io.seorin.ddongkan.repository;
+package io.seorin.ddongkan.repository.db;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
