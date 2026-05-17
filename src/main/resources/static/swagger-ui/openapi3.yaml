@@ -43,105 +43,22 @@ paths:
                 $ref: "#/components/schemas/api-v1-toilets1884267738"
               examples:
                 get-toilets:
-                  value: "[{\"id\":1,\"name\":\"강남역 공중화장실\",\"coord\":{\"lat\":37.4979,\"\
-                    lng\":127.0286}},{\"id\":2,\"name\":\"역삼 문화센터 화장실\",\"coord\"\
-                    :{\"lat\":37.5009,\"lng\":127.0372}},{\"id\":3,\"name\":\"선릉역\
-                    \ 10번출구 화장실\",\"coord\":{\"lat\":37.5046,\"lng\":127.0485}},{\"\
-                    id\":4,\"name\":\"삼성역 코엑스몰 화장실\",\"coord\":{\"lat\":37.5124,\"\
-                    lng\":127.0592}},{\"id\":5,\"name\":\"을지로입구역 지하상가 화장실\",\"coord\"\
-                    :{\"lat\":37.5661,\"lng\":126.9823}},{\"id\":6,\"name\":\"서울시청\
-                    \ 시민청 화장실\",\"coord\":{\"lat\":37.5663,\"lng\":126.978}},{\"id\"\
-                    :7,\"name\":\"홍대입구역 9번출구 화장실\",\"coord\":{\"lat\":37.5571,\"lng\"\
-                    :126.9237}},{\"id\":8,\"name\":\"신촌역 공중화장실\",\"coord\":{\"lat\"\
-                    :37.5595,\"lng\":126.9378}},{\"id\":9,\"name\":\"건대입구역 스타시티 화장\
-                    실\",\"coord\":{\"lat\":37.54,\"lng\":127.0704}},{\"id\":10,\"\
-                    name\":\"여의도 공원 화장실\",\"coord\":{\"lat\":37.5281,\"lng\":126.9225}}]"
-  /api/v1/toilets/{id}:
-    get:
-      tags:
-      - api
-      summary: Retrieve detailed information about a specific toilet by its ID.
-      description: Retrieve detailed information about a specific toilet by its ID.
-      operationId: get-toilet-
-      parameters:
-      - name: id
-        in: path
-        description: Unique identifier of the toilet.
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: "200"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/api-v1-toilets-id-522854228"
-              examples:
-                get-toilet-by-id:
-                  value: "{\"id\":12,\"name\":\"서울역 2F 화장실\",\"address\":\"서울 중구 한\
-                    강대로 405\",\"lat\":37.5547,\"lng\":126.9706,\"openHours\":\"06:00-23:00\"\
-                    ,\"accessible\":true,\"diaper\":true,\"unisex\":false,\"avgRating\"\
-                    :4,\"avgCleanliness\":4}"
-                get-toilet-detail:
-                  value: "{\"id\":1,\"name\":\"강남역 공중화장실\",\"coord\":{\"lat\":37.4979,\"\
-                    lng\":127.0286},\"address\":\"서울 강남구 강남대로 390\",\"openAt\":\"\
-                    2024-12-31T22:00:00Z\",\"closeAt\":\"2025-01-01T13:00:00Z\",\"\
-                    accessible\":true,\"diaper\":true,\"unisex\":false}"
-  /api/v1/toilets/{id}/rating:
-    get:
-      tags:
-      - api
-      summary: Retrieve rating information about a specific toilet by its ID.
-      description: Retrieve rating information about a specific toilet by its ID.
-      operationId: get-toilet-rating
-      parameters:
-      - name: id
-        in: path
-        description: Unique identifier of the toilet.
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: "200"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/api-v1-toilets-id-rating-2058800511"
-              examples:
-                get-toilet-rating:
-                  value: "{\"avgStars\":3.8,\"avgCleanliness\":2.7,\"avgToiletPaper\"\
-                    :2.3,\"avgWaterPressure\":1.9,\"avgHotWater\":1.9,\"avgSafety\"\
-                    :2.3}"
-  /api/v1/toilets/{id}/review:
-    post:
-      tags:
-      - api
-      summary: Submit a review for a specific toilet by its ID.
-      description: Submit a review for a specific toilet by its ID.
-      operationId: post-toilet-review
-      parameters:
-      - name: id
-        in: path
-        description: Unique identifier of the toilet.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json;charset=UTF-8:
-            schema:
-              $ref: "#/components/schemas/api-v1-toilets-id-review973051148"
-            examples:
-              post-toilet-review:
-                value: "{\"stars\":5,\"comment\":\"躙深戼汲捏இ橦룜˔㼇佽ˑ灟삆͛睆讘쪖ﳦ坷ᬇ簪땚溧즠媊㇉ﰄ쾃გ捏\
-                  쪾悤邘헷ꩺ緅갱긺欜橵䕘\",\"likes\":{\"cleanliness\":false,\"toiletPaper\":false,\"\
-                  waterPressure\":false,\"hotWater\":true,\"safety\":true}}"
-      responses:
-        "200":
-          description: "200"
-  /api/v1/toilets/{id}/reviews:
+                  value: "[{\"id\":10,\"name\":\"여의도 공원 화장실\",\"coord\":{\"lat\":37.52809928072327,\"\
+                    lng\":126.92249804735184}},{\"id\":1,\"name\":\"강남역 공중화장실\",\"\
+                    coord\":{\"lat\":37.497900612830904,\"lng\":127.02860087156296}},{\"\
+                    id\":2,\"name\":\"역삼 문화센터 화장실\",\"coord\":{\"lat\":37.5008991879624,\"\
+                    lng\":127.0372000336647}},{\"id\":3,\"name\":\"선릉역 10번출구 화장실\"\
+                    ,\"coord\":{\"lat\":37.50459988085503,\"lng\":127.04849749803543}},{\"\
+                    id\":4,\"name\":\"삼성역 코엑스몰 화장실\",\"coord\":{\"lat\":37.512399217862324,\"\
+                    lng\":127.05919951200485}},{\"id\":9,\"name\":\"건대입구역 스타시티 화장실\
+                    \",\"coord\":{\"lat\":37.53999979656636,\"lng\":127.07040041685104}},{\"\
+                    id\":7,\"name\":\"홍대입구역 9번출구 화장실\",\"coord\":{\"lat\":37.55709902550726,\"\
+                    lng\":126.92369967699051}},{\"id\":8,\"name\":\"신촌역 공중화장실\",\"\
+                    coord\":{\"lat\":37.559499406445156,\"lng\":126.93779736757278}},{\"\
+                    id\":6,\"name\":\"서울시청 시민청 화장실\",\"coord\":{\"lat\":37.566300063315666,\"\
+                    lng\":126.977998316288}},{\"id\":5,\"name\":\"을지로입구역 지하상가 화장실\"\
+                    ,\"coord\":{\"lat\":37.56609982034408,\"lng\":126.98230057954788}}]"
+  /api/v1/reviews/{id}:
     get:
       tags:
       - api
@@ -173,19 +90,151 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/api-v1-toilets-id-reviews181444805"
+                $ref: "#/components/schemas/api-v1-reviews-id181444805"
               examples:
                 get-toilet-reviews:
-                  value: "[{\"stars\":5,\"comment\":\"躙深戼汲捏இ橦룜˔㼇佽ˑ灟삆͛睆讘쪖ﳦ坷ᬇ簪땚溧즠媊㇉ﰄ\
-                    쾃გ捏쪾悤邘헷ꩺ緅갱긺欜橵䕘\",\"cleanliness\":false,\"toiletPaper\":false,\"\
-                    waterPressure\":false,\"hotWater\":true,\"safety\":true,\"createdAt\"\
-                    :\"2026-04-05T07:00:55.412516Z\"},{\"stars\":5,\"comment\":\"宵\
-                    㾖麜鞲뵥橬랷첰힘そ㉝Ṧ﨨㨫⣈썙儔庇釩இ턩ﲉ뛊ꇲⲨꗩ쵤⺸䝥Ŧ朸쉤絸艝⩒洆뱽똆М麮쿶ȯ㢎뵥豾꫙옾⺡෥ꪾ㥫℟츇暶峚嘒쐰ឡ駑鄾너鲳✨\
-                    휆遼Ꞡꕕꢌ핪ꎨ啣随ꪾ⍿蟘岔뢠焭킭២秃縎▽ꗫ෥⥻㈟苫ࠦ䔬쀿낮䰤㭎㈁縄餲ꮢ䉜Ꭳ㊊맽₧馱켟狼㦖焾ㅎ‧똙鞝ᕷ㌣෨젠ꩋ㸫崶锭صﯶ㧔쒭⭥\
-                    층縐綨뱑ᐠ뷵钇賈ꜞ﨟簠एਬ锦乮㡎椉鄷祢〛녎䭄拣右㯼ᮨ梠欳䴞ⅉ嶡嘫擣㦔껁馁礉ǘ쑇Ҽ\",\"cleanliness\":true,\"\
+                  value: "[{\"stars\":2,\"comment\":\"생각보다 깔끔해요\",\"cleanliness\"\
+                    :false,\"toiletPaper\":true,\"waterPressure\":false,\"hotWater\"\
+                    :false,\"safety\":true,\"createdAt\":\"2024-01-22T18:00:00Z\"\
+                    },{\"stars\":5,\"comment\":\"안전한 편이에요\",\"cleanliness\":true,\"\
                     toiletPaper\":false,\"waterPressure\":true,\"hotWater\":true,\"\
-                    safety\":false,\"createdAt\":\"2026-01-18T11:36:39.710653Z\"},{\"\
-                    stars\":4,\"comment\":\"叛ꔫ댴ꏾႵ负㿕ᓁᅃ洕㦢↛⢑ᙵや쾞瀑噺襃ᚱ滊啊⚝ᬔ뾟ʷ\",\"cleanliness\"\
+                    safety\":false,\"createdAt\":\"2024-01-21T09:00:00Z\"},{\"stars\"\
+                    :2,\"comment\":\"깨끗하고 좋아요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-01-20T22:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"깨끗하고 좋아요\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2024-01-19T20:00:00Z\"\
+                    },{\"stars\":4,\"comment\":\"수압이 약해요\",\"cleanliness\":true,\"\
+                    toiletPaper\":true,\"waterPressure\":true,\"hotWater\":true,\"\
+                    safety\":false,\"createdAt\":\"2024-01-18T04:00:00Z\"},{\"stars\"\
+                    :2,\"comment\":null,\"cleanliness\":true,\"toiletPaper\":false,\"\
+                    waterPressure\":true,\"hotWater\":false,\"safety\":false,\"createdAt\"\
+                    :\"2024-01-17T14:00:00Z\"},{\"stars\":5,\"comment\":\"냄새가 좀 납니\
+                    다\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-01-16T15:00:00Z\"\
+                    },{\"stars\":4,\"comment\":\"깨끗하고 좋아요\",\"cleanliness\":false,\"\
+                    toiletPaper\":false,\"waterPressure\":true,\"hotWater\":true,\"\
+                    safety\":false,\"createdAt\":\"2024-01-15T16:00:00Z\"},{\"stars\"\
+                    :3,\"comment\":\"화장지가 없어요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":true,\"safety\":false,\"\
+                    createdAt\":\"2024-01-14T08:00:00Z\"},{\"stars\":3,\"comment\"\
+                    :\"관리가 잘 되어 있어요\",\"cleanliness\":true,\"toiletPaper\":true,\"\
+                    waterPressure\":false,\"hotWater\":false,\"safety\":false,\"createdAt\"\
+                    :\"2024-01-13T10:00:00Z\"}]"
+    post:
+      tags:
+      - api
+      summary: Submit a review for a specific toilet by its ID.
+      description: Submit a review for a specific toilet by its ID.
+      operationId: post-toilet-review
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: "#/components/schemas/api-v1-reviews-id973051148"
+            examples:
+              post-toilet-review:
+                value: "{\"stars\":2,\"comment\":\"硤त⨑蚝睋Ჯꎼᶜ퉤䑀⋮\",\"likes\":{\"cleanliness\"\
+                  :false,\"toiletPaper\":false,\"waterPressure\":false,\"hotWater\"\
+                  :false,\"safety\":true}}"
+      responses:
+        "200":
+          description: "200"
+  /api/v1/toilets/{id}:
+    get:
+      tags:
+      - api
+      summary: Retrieve detailed information about a specific toilet by its ID.
+      description: Retrieve detailed information about a specific toilet by its ID.
+      operationId: get-toilet-detail
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api-v1-toilets-id-2073229674"
+              examples:
+                get-toilet-detail:
+                  value: "{\"id\":1,\"name\":\"강남역 공중화장실\",\"coord\":{\"lat\":37.4979,\"\
+                    lng\":127.0286},\"address\":\"서울 강남구 강남대로 390\",\"openAt\":\"\
+                    2024-12-31T22:00:00Z\",\"closeAt\":\"2025-01-01T13:00:00Z\",\"\
+                    accessible\":true,\"diaper\":true,\"unisex\":false}"
+  /api/v1/reviews/{id}/latest:
+    get:
+      tags:
+      - api
+      summary: 최신 100개의 화장실 리뷰를 조회합니다.
+      description: 최신 100개의 화장실 리뷰를 조회합니다.
+      operationId: get-latest-toilet-reviews
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api-v1-reviews-id181444805"
+              examples:
+                get-latest-toilet-reviews:
+                  value: "[{\"stars\":2,\"comment\":\"硤त⨑蚝睋Ჯꎼᶜ퉤䑀⋮\",\"cleanliness\"\
+                    :false,\"toiletPaper\":false,\"waterPressure\":false,\"hotWater\"\
+                    :false,\"safety\":true,\"createdAt\":\"2026-05-17T13:11:00.994338Z\"\
+                    },{\"stars\":2,\"comment\":\"ᣎ溴ㄲ彀ྐ៉㧔䮽誄ᥭ犧綒휿\",\"cleanliness\":true,\"\
+                    toiletPaper\":false,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2026-05-17T13:03:04.775062Z\"},{\"\
+                    stars\":5,\"comment\":\"㢙ꓦ덤䇘\",\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":false,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2026-05-17T12:53:42.815763Z\"},{\"stars\":1,\"comment\"\
+                    :\"幺⩳糊㉏鴣៊毀뜌珜띤ﳧ厝窆鎛겚廚敦И筰⧭庆詃\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":true,\"safety\":false,\"\
+                    createdAt\":\"2026-05-17T12:37:49.899512Z\"},{\"stars\":5,\"comment\"\
+                    :\"\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2026-05-17T12:37:29.747582Z\"\
+                    },{\"stars\":2,\"comment\":\"景⬟༚吽骨䁍幤呾ฦ㓚粲袤䙜鲥䐂ꓷ闡硒篠臩웎嶦悟쒖놖団ﶒ뢣圕⌛㋌㕐䞚\
+                    嬵࠘䴷歄৉䃂㉘힎橮풄➞㪋继㌕襔ዷ諈놗罘媀졯ᮈ쿺羅飔쩕ꀕꓺ條ﾖ⨗汮깣됰亭돐㑖囏粚㐀葽༉額ࡤ賣䛭㷳诠኿̸큤ꊹ╶곷섿裣ҥ魒身ၵ㈹ⳏ\
+                    灳쓘铨箷睭㽻憎䌽ෑ涌ᚺᅖ孒啘黯䠡좚軔즗붩ᡔ骖™㦔蘚휿辏홉꺻㵯넘솗ᥧ뉁ᬊ碝妸㘞焛熁ꙅᛸđ隡첯찏덼泝ᇚ瓜摂虺ታ衞㞻鍽脫ힹ䀝뽉ⓩṼ\
+                    䌏핗엤╝땦葛偒鱬乡䣾뜭鷱흂舺➋䁖ᖨ᧷ᠡᥳₕ呎朤懃쉨᳿릓䃔䮀⵿푚᧲챛烀힘慗晅弼邊ꄥ᯿爪딬⟥凵⚌䨲됎絹॓ঢ裬됄⭟鞉漃⃻쮣䵘峫뀇鼋\
+                    ǃ顷齙뚡䬨⣼풆餁㕗坖酕쯆뽗ﺖ࣒碫숁끁⥢誨뱴歖甜ẛ멣䛀䧻尡\",\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2026-05-17T12:36:23.285925Z\"},{\"stars\":4,\"comment\"\
+                    :\"᷐嘳ﴝ扗⠾숴삍揎貑녹ᣘ巵璒Ң亸沐뫺켤섬称䏀\",\"cleanliness\":false,\"toiletPaper\"\
+                    :false,\"waterPressure\":false,\"hotWater\":false,\"safety\":true,\"\
+                    createdAt\":\"2026-05-17T12:33:50.277941Z\"},{\"stars\":1,\"comment\"\
+                    :null,\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2026-05-17T12:32:18.171876Z\"\
+                    },{\"stars\":4,\"comment\":\"꥙།씑깶ꕱ짲檬쥷滷Ꮬ₽﭂惎ᬭꡂ翏굋ﴓᦨ\",\"cleanliness\"\
+                    :false,\"toiletPaper\":false,\"waterPressure\":true,\"hotWater\"\
+                    :true,\"safety\":false,\"createdAt\":\"2026-04-05T09:42:00.668683Z\"\
+                    },{\"stars\":5,\"comment\":\"躙深戼汲捏இ橦룜˔㼇佽ˑ灟삆͛睆讘쪖ﳦ坷ᬇ簪땚溧즠媊㇉ﰄ쾃გ捏쪾悤\
+                    邘헷ꩺ緅갱긺欜橵䕘\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2026-04-05T07:00:55.412516Z\"\
+                    },{\"stars\":5,\"comment\":\"宵㾖麜鞲뵥橬랷첰힘そ㉝Ṧ﨨㨫⣈썙儔庇釩இ턩ﲉ뛊ꇲⲨꗩ쵤⺸䝥Ŧ朸쉤絸\
+                    艝⩒洆뱽똆М麮쿶ȯ㢎뵥豾꫙옾⺡෥ꪾ㥫℟츇暶峚嘒쐰ឡ駑鄾너鲳✨휆遼Ꞡꕕꢌ핪ꎨ啣随ꪾ⍿蟘岔뢠焭킭២秃縎▽ꗫ෥⥻㈟苫ࠦ䔬쀿낮䰤㭎㈁\
+                    縄餲ꮢ䉜Ꭳ㊊맽₧馱켟狼㦖焾ㅎ‧똙鞝ᕷ㌣෨젠ꩋ㸫崶锭صﯶ㧔쒭⭥층縐綨뱑ᐠ뷵钇賈ꜞ﨟簠एਬ锦乮㡎椉鄷祢〛녎䭄拣右㯼ᮨ梠欳䴞ⅉ嶡嘫\
+                    擣㦔껁馁礉ǘ쑇Ҽ\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2026-01-18T11:36:39.710653Z\"\
+                    },{\"stars\":4,\"comment\":\"叛ꔫ댴ꏾႵ负㿕ᓁᅃ洕㦢↛⢑ᙵや쾞瀑噺襃ᚱ滊啊⚝ᬔ뾟ʷ\",\"cleanliness\"\
                     :false,\"toiletPaper\":true,\"waterPressure\":false,\"hotWater\"\
                     :false,\"safety\":false,\"createdAt\":\"2026-01-18T11:36:32.578896Z\"\
                     },{\"stars\":5,\"comment\":\"廜뜀앻ၙ宷쓥઻ĉ쌞弙袼賋馿귞౞뭐뱿蜌盏萲䘱근瓴林ཥࢉ⅘糢탼㒶ᫌ吐蚬\
@@ -211,10 +260,249 @@ paths:
                     createdAt\":\"2025-12-30T10:25:55.693716Z\"},{\"stars\":1,\"comment\"\
                     :\"Ⰽ훳腃㯶瓺驭脮鎓ᛊ烎\",\"cleanliness\":false,\"toiletPaper\":false,\"\
                     waterPressure\":true,\"hotWater\":true,\"safety\":true,\"createdAt\"\
-                    :\"2025-12-30T10:25:25.127501Z\"}]"
+                    :\"2025-12-30T10:25:25.127501Z\"},{\"stars\":5,\"comment\":\"어\
+                    ᜢ큕ﶸῈ멗哋傜헴ᄃ玷凁ⶫȬ염ᣊ秄餮芭瀫烟쑶࠰ꖄ\",\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2025-11-24T12:47:55.26414Z\"},{\"stars\":4,\"comment\"\
+                    :\"ﱜ\",\"cleanliness\":true,\"toiletPaper\":true,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2025-11-24T12:47:08.030394Z\"\
+                    },{\"stars\":3,\"comment\":\"\",\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":false,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2025-11-20T14:57:40.827055Z\"},{\"stars\":3,\"comment\"\
+                    :\"안전한 편이에요\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-04-09T12:00:00Z\"\
+                    },{\"stars\":1,\"comment\":\"물이 잘 나와요\",\"cleanliness\":true,\"\
+                    toiletPaper\":true,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2024-04-08T21:00:00Z\"},{\"stars\"\
+                    :2,\"comment\":\"관리가 잘 되어 있어요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-04-07T01:00:00Z\"},{\"stars\":2,\"comment\"\
+                    :\"안전한 편이에요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2024-04-06T17:00:00Z\"\
+                    },{\"stars\":1,\"comment\":\"깨끗하고 좋아요\",\"cleanliness\":false,\"\
+                    toiletPaper\":false,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2024-04-05T12:00:00Z\"},{\"stars\"\
+                    :3,\"comment\":null,\"cleanliness\":false,\"toiletPaper\":true,\"\
+                    waterPressure\":false,\"hotWater\":true,\"safety\":true,\"createdAt\"\
+                    :\"2024-04-04T10:00:00Z\"},{\"stars\":3,\"comment\":\"생각보다 깔끔해\
+                    요\",\"cleanliness\":true,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-04-03T00:00:00Z\"\
+                    },{\"stars\":3,\"comment\":\"따뜻한 물이 나와요\",\"cleanliness\":false,\"\
+                    toiletPaper\":false,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2024-04-02T07:00:00Z\"},{\"stars\"\
+                    :2,\"comment\":null,\"cleanliness\":true,\"toiletPaper\":false,\"\
+                    waterPressure\":true,\"hotWater\":true,\"safety\":false,\"createdAt\"\
+                    :\"2024-04-01T10:00:00Z\"},{\"stars\":5,\"comment\":\"수압이 약해요\"\
+                    ,\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-03-31T20:00:00Z\"\
+                    },{\"stars\":3,\"comment\":\"생각보다 깔끔해요\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":true,\"hotWater\":true,\"\
+                    safety\":true,\"createdAt\":\"2024-03-30T16:00:00Z\"},{\"stars\"\
+                    :1,\"comment\":\"화장지가 없어요\",\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-03-29T04:00:00Z\"},{\"stars\":4,\"comment\"\
+                    :null,\"cleanliness\":true,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-03-28T03:00:00Z\"\
+                    },{\"stars\":3,\"comment\":null,\"cleanliness\":false,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-03-27T09:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :null,\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2024-03-26T22:00:00Z\"\
+                    },{\"stars\":3,\"comment\":\"깨끗하고 좋아요\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":false,\"hotWater\":true,\"\
+                    safety\":true,\"createdAt\":\"2024-03-25T15:00:00Z\"},{\"stars\"\
+                    :4,\"comment\":\"수압이 약해요\",\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":true,\"safety\":false,\"\
+                    createdAt\":\"2024-03-24T09:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"화장지가 없어요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-03-23T07:00:00Z\"\
+                    },{\"stars\":4,\"comment\":\"물이 잘 나와요\",\"cleanliness\":false,\"\
+                    toiletPaper\":false,\"waterPressure\":true,\"hotWater\":false,\"\
+                    safety\":true,\"createdAt\":\"2024-03-22T10:00:00Z\"},{\"stars\"\
+                    :5,\"comment\":null,\"cleanliness\":false,\"toiletPaper\":false,\"\
+                    waterPressure\":false,\"hotWater\":true,\"safety\":true,\"createdAt\"\
+                    :\"2024-03-21T19:00:00Z\"},{\"stars\":2,\"comment\":\"청결 상태 보통\
+                    이에요\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2024-03-20T04:00:00Z\"\
+                    },{\"stars\":5,\"comment\":null,\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-03-19T06:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :\"화장지가 없어요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2024-03-18T08:00:00Z\"\
+                    },{\"stars\":5,\"comment\":null,\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-03-17T22:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"물이 잘 나와요\",\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\"\
+                    :true,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-03-16T12:00:00Z\"\
+                    },{\"stars\":2,\"comment\":\"관리가 잘 되어 있어요\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":true,\"createdAt\":\"2024-03-15T16:00:00Z\"},{\"stars\"\
+                    :5,\"comment\":null,\"cleanliness\":true,\"toiletPaper\":true,\"\
+                    waterPressure\":false,\"hotWater\":true,\"safety\":false,\"createdAt\"\
+                    :\"2024-03-14T06:00:00Z\"},{\"stars\":3,\"comment\":\"청결 상태 보통\
+                    이에요\",\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2024-03-13T03:00:00Z\"\
+                    },{\"stars\":2,\"comment\":null,\"cleanliness\":false,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-03-12T00:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"냄새가 좀 납니다\",\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-03-11T07:00:00Z\"\
+                    },{\"stars\":3,\"comment\":\"청결 상태 보통이에요\",\"cleanliness\":true,\"\
+                    toiletPaper\":false,\"waterPressure\":true,\"hotWater\":true,\"\
+                    safety\":true,\"createdAt\":\"2024-03-10T09:00:00Z\"},{\"stars\"\
+                    :5,\"comment\":\"따뜻한 물이 나와요\",\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-03-09T01:00:00Z\"},{\"stars\":3,\"comment\"\
+                    :\"따뜻한 물이 나와요\",\"cleanliness\":true,\"toiletPaper\":false,\"\
+                    waterPressure\":true,\"hotWater\":true,\"safety\":false,\"createdAt\"\
+                    :\"2024-03-08T17:00:00Z\"},{\"stars\":3,\"comment\":\"생각보다 깔끔해\
+                    요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-03-07T14:00:00Z\"\
+                    },{\"stars\":3,\"comment\":null,\"cleanliness\":false,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-03-06T02:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :\"안전한 편이에요\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2024-03-05T01:00:00Z\"\
+                    },{\"stars\":5,\"comment\":\"냄새가 좀 납니다\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":true,\"createdAt\":\"2024-03-04T12:00:00Z\"},{\"stars\"\
+                    :1,\"comment\":\"냄새가 좀 납니다\",\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":false,\"safety\":true,\"\
+                    createdAt\":\"2024-03-03T02:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"깨끗하고 좋아요\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2024-03-02T12:00:00Z\"\
+                    },{\"stars\":1,\"comment\":\"화장지가 없어요\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":true,\"hotWater\":true,\"\
+                    safety\":false,\"createdAt\":\"2024-03-01T07:00:00Z\"},{\"stars\"\
+                    :4,\"comment\":\"깨끗하고 좋아요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-02-29T01:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :\"안전한 편이에요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2024-02-28T11:00:00Z\"\
+                    },{\"stars\":2,\"comment\":\"물이 잘 나와요\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2024-02-27T22:00:00Z\"},{\"stars\"\
+                    :4,\"comment\":\"청결 상태 보통이에요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-02-26T08:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"냄새가 좀 납니다\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2024-02-25T03:00:00Z\"\
+                    },{\"stars\":4,\"comment\":\"따뜻한 물이 나와요\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":true,\"hotWater\":false,\"\
+                    safety\":true,\"createdAt\":\"2024-02-24T07:00:00Z\"},{\"stars\"\
+                    :4,\"comment\":null,\"cleanliness\":false,\"toiletPaper\":true,\"\
+                    waterPressure\":false,\"hotWater\":true,\"safety\":false,\"createdAt\"\
+                    :\"2024-02-23T02:00:00Z\"},{\"stars\":3,\"comment\":\"생각보다 깔끔해\
+                    요\",\"cleanliness\":true,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-02-22T06:00:00Z\"\
+                    },{\"stars\":3,\"comment\":\"안전한 편이에요\",\"cleanliness\":true,\"\
+                    toiletPaper\":true,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":true,\"createdAt\":\"2024-02-21T04:00:00Z\"},{\"stars\"\
+                    :4,\"comment\":null,\"cleanliness\":false,\"toiletPaper\":true,\"\
+                    waterPressure\":false,\"hotWater\":false,\"safety\":true,\"createdAt\"\
+                    :\"2024-02-20T06:00:00Z\"},{\"stars\":1,\"comment\":\"냄새가 좀 납니\
+                    다\",\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":true,\"createdAt\":\"2024-02-19T10:00:00Z\"\
+                    },{\"stars\":1,\"comment\":\"깨끗하고 좋아요\",\"cleanliness\":false,\"\
+                    toiletPaper\":false,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2024-02-18T02:00:00Z\"},{\"stars\"\
+                    :2,\"comment\":\"청결 상태 보통이에요\",\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-02-17T18:00:00Z\"},{\"stars\":2,\"comment\"\
+                    :\"화장지가 없어요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-02-16T04:00:00Z\"\
+                    },{\"stars\":5,\"comment\":\"수압이 약해요\",\"cleanliness\":true,\"\
+                    toiletPaper\":true,\"waterPressure\":true,\"hotWater\":false,\"\
+                    safety\":true,\"createdAt\":\"2024-02-15T19:00:00Z\"},{\"stars\"\
+                    :1,\"comment\":\"관리가 잘 되어 있어요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-02-14T11:00:00Z\"},{\"stars\":4,\"comment\"\
+                    :\"냄새가 좀 납니다\",\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-02-13T18:00:00Z\"\
+                    },{\"stars\":1,\"comment\":null,\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-02-12T07:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"화장지가 없어요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-02-11T01:00:00Z\"\
+                    },{\"stars\":1,\"comment\":\"관리가 잘 되어 있어요\",\"cleanliness\":true,\"\
+                    toiletPaper\":false,\"waterPressure\":true,\"hotWater\":false,\"\
+                    safety\":true,\"createdAt\":\"2024-02-10T23:00:00Z\"},{\"stars\"\
+                    :3,\"comment\":\"냄새가 좀 납니다\",\"cleanliness\":true,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-02-09T20:00:00Z\"},{\"stars\":3,\"comment\"\
+                    :\"화장지가 없어요\",\"cleanliness\":false,\"toiletPaper\":false,\"waterPressure\"\
+                    :false,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-02-08T22:00:00Z\"\
+                    },{\"stars\":1,\"comment\":null,\"cleanliness\":true,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-02-07T05:00:00Z\"},{\"stars\":5,\"comment\"\
+                    :\"물이 잘 나와요\",\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\"\
+                    :true,\"hotWater\":true,\"safety\":false,\"createdAt\":\"2024-02-06T03:00:00Z\"\
+                    },{\"stars\":4,\"comment\":\"냄새가 좀 납니다\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":true,\"hotWater\":true,\"\
+                    safety\":true,\"createdAt\":\"2024-02-05T17:00:00Z\"},{\"stars\"\
+                    :3,\"comment\":\"따뜻한 물이 나와요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":false,\"safety\":true,\"\
+                    createdAt\":\"2024-02-04T02:00:00Z\"},{\"stars\":3,\"comment\"\
+                    :\"수압이 약해요\",\"cleanliness\":false,\"toiletPaper\":true,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2024-02-03T03:00:00Z\"\
+                    },{\"stars\":4,\"comment\":\"화장지가 없어요\",\"cleanliness\":false,\"\
+                    toiletPaper\":true,\"waterPressure\":true,\"hotWater\":true,\"\
+                    safety\":true,\"createdAt\":\"2024-02-02T17:00:00Z\"},{\"stars\"\
+                    :4,\"comment\":\"안전한 편이에요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":true,\"safety\":false,\"\
+                    createdAt\":\"2024-02-01T02:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :\"냄새가 좀 납니다\",\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-01-31T06:00:00Z\"\
+                    },{\"stars\":5,\"comment\":\"수압이 약해요\",\"cleanliness\":true,\"\
+                    toiletPaper\":true,\"waterPressure\":false,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2024-01-30T12:00:00Z\"},{\"stars\"\
+                    :4,\"comment\":\"깨끗하고 좋아요\",\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":true,\"hotWater\":false,\"safety\":true,\"\
+                    createdAt\":\"2024-01-29T21:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :null,\"cleanliness\":true,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":false,\"safety\":false,\"createdAt\":\"2024-01-28T23:00:00Z\"\
+                    },{\"stars\":5,\"comment\":null,\"cleanliness\":false,\"toiletPaper\"\
+                    :false,\"waterPressure\":true,\"hotWater\":true,\"safety\":true,\"\
+                    createdAt\":\"2024-01-27T11:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :\"냄새가 좀 납니다\",\"cleanliness\":true,\"toiletPaper\":true,\"waterPressure\"\
+                    :false,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2024-01-26T22:00:00Z\"\
+                    },{\"stars\":2,\"comment\":null,\"cleanliness\":false,\"toiletPaper\"\
+                    :true,\"waterPressure\":false,\"hotWater\":false,\"safety\":false,\"\
+                    createdAt\":\"2024-01-25T11:00:00Z\"},{\"stars\":1,\"comment\"\
+                    :null,\"cleanliness\":true,\"toiletPaper\":false,\"waterPressure\"\
+                    :true,\"hotWater\":false,\"safety\":true,\"createdAt\":\"2024-01-24T08:00:00Z\"\
+                    },{\"stars\":3,\"comment\":\"냄새가 좀 납니다\",\"cleanliness\":true,\"\
+                    toiletPaper\":false,\"waterPressure\":true,\"hotWater\":false,\"\
+                    safety\":false,\"createdAt\":\"2024-01-23T12:00:00Z\"}]"
+  /api/v1/reviews/{id}/rating:
+    get:
+      tags:
+      - api
+      summary: Retrieve rating information about a specific toilet by its ID.
+      description: Retrieve rating information about a specific toilet by its ID.
+      operationId: get-toilet-rating
+      parameters:
+      - name: id
+        in: path
+        description: Unique identifier of the toilet.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api-v1-reviews-id-rating-2058800511"
+              examples:
+                get-toilet-rating:
+                  value: "{\"avgStars\":3.1,\"avgCleanliness\":2.3,\"avgToiletPaper\"\
+                    :2.5,\"avgWaterPressure\":2.4,\"avgHotWater\":2.5,\"avgSafety\"\
+                    :2.3}"
 components:
   schemas:
-    api-v1-toilets-id-review973051148:
+    api-v1-reviews-id973051148:
       type: object
       properties:
         comment:
@@ -244,7 +532,7 @@ components:
               type: boolean
               description: Indicates if the reviewer liked the cleanliness of the
                 toilet.
-    api-v1-toilets-id-reviews181444805:
+    api-v1-reviews-id181444805:
       type: array
       description: List of items
       items:
@@ -297,7 +585,7 @@ components:
             type: number
             description: Unique identifier of the toilet.
         description: List of items
-    api-v1-toilets-id-rating-2058800511:
+    api-v1-reviews-id-rating-2058800511:
       type: object
       properties:
         avgHotWater:
@@ -318,30 +606,15 @@ components:
         avgCleanliness:
           type: number
           description: Average cleanliness rating.
-    api-v1-toilets-id-522854228:
+    api-v1-toilets-id-2073229674:
       type: object
       properties:
-        openHours:
-          type: string
-          description: Operating hours of the toilet.
-        accessible:
-          type: boolean
-          description: Indicates if the toilet is accessible.
-        address:
-          type: string
-          description: Address of the toilet.
-        lng:
-          type: number
-          description: Longitude of the toilet.
-        closeAt:
-          type: string
-          description: Closing time of the toilet.
-        avgCleanliness:
-          type: number
-          description: Average cleanliness rating of the toilet.
         unisex:
           type: boolean
           description: Indicates if the toilet is unisex.
+        accessible:
+          type: boolean
+          description: Indicates if the toilet is accessible.
         coord:
           type: object
           properties:
@@ -351,21 +624,21 @@ components:
             lat:
               type: number
               description: Latitude of the toilet.
+        address:
+          type: string
+          description: Address of the toilet.
         name:
           type: string
           description: Name of the toilet.
-        avgRating:
-          type: number
-          description: Average overall rating of the toilet.
         diaper:
           type: boolean
           description: Indicates if the toilet has diaper facilities.
         id:
           type: number
           description: Unique identifier of the toilet.
+        closeAt:
+          type: string
+          description: Closing time of the toilet.
         openAt:
           type: string
           description: Opening time of the toilet.
-        lat:
-          type: number
-          description: Latitude of the toilet.
