@@ -24,7 +24,11 @@ public class ReviewService {
 	private final ToiletRepository toiletRepository;
 	private final RaitingRepository raitingRepository;
 
-	public ReviewService(ReviewRepository reviewRepository, ToiletRepository toiletRepository, RaitingRepository raitingRepository) {
+	public ReviewService(
+		ReviewRepository reviewRepository,
+		ToiletRepository toiletRepository,
+		RaitingRepository raitingRepository
+	) {
 		this.reviewRepository = reviewRepository;
 		this.toiletRepository = toiletRepository;
 		this.raitingRepository = raitingRepository;
